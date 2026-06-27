@@ -14,7 +14,10 @@ public class PrincipalView extends javax.swing.JFrame {
     private UpdateUserView updateUserView;
     private DeleteUserView deleteUserView;
     private ListUsersView listUsersView;
-    
+    private CreateBookView createBookView;
+    private SearchBookView searchBookView;
+    private DeleteBookView deleteBookView;
+    private ListBookView listBookView;
 
     /**
      * Creates new form PrincipalView
@@ -27,8 +30,10 @@ public class PrincipalView extends javax.swing.JFrame {
         updateUserView = new UpdateUserView();
         deleteUserView = new DeleteUserView();
         listUsersView = new ListUsersView();
-    
-
+        createBookView = new CreateBookView();
+        searchBookView = new SearchBookView();
+        deleteBookView = new DeleteBookView();
+        listBookView = new ListBookView();
     }
     
 
@@ -149,9 +154,11 @@ public class PrincipalView extends javax.swing.JFrame {
         menuBook.add(searchMenuBook);
 
         deleteMenuBook.setText("Eliminar");
+        deleteMenuBook.addActionListener(this::deleteMenuBookActionPerformed);
         menuBook.add(deleteMenuBook);
 
         listMenuBook.setText("Listar");
+        listMenuBook.addActionListener(this::listMenuBookActionPerformed);
         menuBook.add(listMenuBook);
 
         menuBar.add(menuBook);
@@ -236,17 +243,43 @@ public class PrincipalView extends javax.swing.JFrame {
 
     private void createMenuBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createMenuBookActionPerformed
         // TODO add your handling code here:
-  
+        if(createBookView != null || !createBookView.isVisible()){
+            desktopPane.remove(createBookView);
+            createBookView.setVisible(true);
+            desktopPane.add(createBookView);
+        }
     }//GEN-LAST:event_createMenuBookActionPerformed
 
     private void searchMenuBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchMenuBookActionPerformed
         // TODO add your handling code here:
-    
+        if(searchBookView != null || searchBookView.isVisible()){
+            desktopPane.remove(searchBookView);
+            searchBookView.setVisible(true);
+            desktopPane.add(searchBookView);
+        }
     }//GEN-LAST:event_searchMenuBookActionPerformed
 
     private void languageMenuEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageMenuEnglishActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_languageMenuEnglishActionPerformed
+
+    private void deleteMenuBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuBookActionPerformed
+        // TODO add your handling code here:
+        if(deleteBookView != null || deleteBookView.isVisible()){
+           desktopPane.remove(deleteBookView);
+           deleteBookView.setVisible(true);
+           desktopPane.add(deleteBookView);
+        }
+    }//GEN-LAST:event_deleteMenuBookActionPerformed
+
+    private void listMenuBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listMenuBookActionPerformed
+        // TODO add your handling code here:
+        if(listBookView != null || !listBookView.isVisible()){
+            desktopPane.remove(listBookView);
+            listBookView.setVisible(true);
+            desktopPane.add(listBookView);
+        }
+    }//GEN-LAST:event_listMenuBookActionPerformed
 
     /**
      * @param args the command line arguments
