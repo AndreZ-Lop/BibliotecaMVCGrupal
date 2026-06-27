@@ -4,18 +4,22 @@
  */
 package ec.edu.ups.biblioteca.models;
 
+import java.util.Date;
+
 public class BookBorrow {
     private User userBook;
     private Book bookBorrowed;
     private int transactionNumber;
+    private Date returnDate;
 
     public BookBorrow() {
     }
 
-    public BookBorrow(User userBook, Book bookBorrowed, int transactionNumber) {
+    public BookBorrow(User userBook, Book bookBorrowed, int transactionNumber,Date returnDate) {
         this.userBook = userBook;
         this.bookBorrowed = bookBorrowed;
         this.transactionNumber = transactionNumber;
+        this.returnDate = returnDate;
     }
 
     public User getUserBook() {
@@ -41,6 +45,16 @@ public class BookBorrow {
     public void setTransactionNumber(int transactionNumber) {
         this.transactionNumber = transactionNumber;
     }
+
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
+    
+    
 
     @Override
     public int hashCode() {

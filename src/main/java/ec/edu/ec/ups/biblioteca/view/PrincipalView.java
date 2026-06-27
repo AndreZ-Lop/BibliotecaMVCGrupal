@@ -30,6 +30,13 @@ public class PrincipalView extends javax.swing.JFrame {
     //Usurio logeado
     private User userLogged;
     
+    //Menu prestamos
+    private LogInView logInView;
+    private BorrowsView borrowsView;
+    private ListBorrowsView listBorrowsView;
+    private ReturnsView returnsView;
+    
+    
 
     /**
      * Creates new form PrincipalView
@@ -56,6 +63,12 @@ public class PrincipalView extends javax.swing.JFrame {
         
         //Usuario
         this.userLogged = null;
+        //Prestamos
+        logInView = new LogInView();
+        borrowsView = new BorrowsView();
+        listBorrowsView = new ListBorrowsView();
+        returnsView = new ReturnsView();
+        
     }
     
 
@@ -79,6 +92,7 @@ public class PrincipalView extends javax.swing.JFrame {
         btnLogIn = new javax.swing.JButton();
         btnList = new javax.swing.JButton();
         btnReturn = new javax.swing.JButton();
+        btnListBorrows = new javax.swing.JButton();
         btnLogOut = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         userMenu = new javax.swing.JMenu();
@@ -112,12 +126,19 @@ public class PrincipalView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnLogIn.setText("Iniciar Sesion");
+        btnLogIn.addActionListener(this::btnLogInActionPerformed);
 
         btnList.setText("Pedir");
+        btnList.addActionListener(this::btnListActionPerformed);
 
         btnReturn.setText("Devolver");
+        btnReturn.addActionListener(this::btnReturnActionPerformed);
+
+        btnListBorrows.setText("Listar");
+        btnListBorrows.addActionListener(this::btnListBorrowsActionPerformed);
 
         btnLogOut.setText("Cerrar Sesion");
+        btnLogOut.addActionListener(this::btnLogOutActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -130,9 +151,13 @@ public class PrincipalView extends javax.swing.JFrame {
                     .addComponent(btnLogIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(51, 51, 51)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnListBorrows, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
                     .addComponent(btnList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(69, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogOut)
+                .addGap(143, 143, 143))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,8 +169,10 @@ public class PrincipalView extends javax.swing.JFrame {
                 .addGap(78, 78, 78)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnReturn)
-                    .addComponent(btnLogOut))
-                .addContainerGap(92, Short.MAX_VALUE))
+                    .addComponent(btnListBorrows))
+                .addGap(30, 30, 30)
+                .addComponent(btnLogOut)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         desktopPane.add(jPanel1);
@@ -373,6 +400,47 @@ public class PrincipalView extends javax.swing.JFrame {
             desktopPane.add(deleteAuthorView);
         }
     }//GEN-LAST:event_deleteMenuAuthorActionPerformed
+
+    private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
+        // TODO add your handling code here:
+        if(logInView != null || !logInView.isVisible()){
+            desktopPane.remove(logInView);
+            logInView.setVisible(true);
+            desktopPane.add(logInView);
+        }
+    }//GEN-LAST:event_btnLogInActionPerformed
+
+    private void btnListBorrowsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListBorrowsActionPerformed
+        // TODO add your handling code here:
+        if(borrowsView != null || !borrowsView.isVisible()){
+            desktopPane.remove(borrowsView);
+            borrowsView.setVisible(true);
+            desktopPane.add(borrowsView);
+        }
+    }//GEN-LAST:event_btnListBorrowsActionPerformed
+
+    private void btnListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListActionPerformed
+        // TODO add your handling code here:
+        if(listBorrowsView != null || !listBorrowsView.isVisible()){
+            desktopPane.remove(listBorrowsView);
+            listBorrowsView.setVisible(true);
+            desktopPane.add(listBorrowsView);
+        }
+    }//GEN-LAST:event_btnListActionPerformed
+
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
+        // TODO add your handling code here:
+        if(returnsView != null || !returnsView.isVisible()){
+            desktopPane.remove(returnsView);
+            returnsView.setVisible(true);
+            desktopPane.add(returnsView);
+        }
+    }//GEN-LAST:event_btnReturnActionPerformed
+
+    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
+        // TODO add your handling code here:
+        this.userLogged = null;
+    }//GEN-LAST:event_btnLogOutActionPerformed
     public User getUserLogged(){
         return userLogged;
     }
@@ -418,6 +486,7 @@ public class PrincipalView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu authorMenu;
     private javax.swing.JButton btnList;
+    private javax.swing.JButton btnListBorrows;
     private javax.swing.JButton btnLogIn;
     private javax.swing.JButton btnLogOut;
     private javax.swing.JButton btnReturn;
