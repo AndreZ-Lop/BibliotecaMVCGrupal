@@ -5,7 +5,7 @@
 package ec.edu.ec.bibliotecaDAO;
 
 import ec.edu.ups.biblioteca.models.Author;
-import ec.edu.ups.biblioteca.models.Book;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,15 +63,4 @@ public class DaoAuthorMemory implements DaoAuthor{
         return authors;
     }
 
-    @Override
-    public void addBook(Book book, int idSearch) {
-        if(authors.isEmpty()) return;
-        for(Author search :authors){
-            if(idSearch == search.getiD()){
-                search.addBook(book);
-                return;
-            }
-        }
-        
-    }
 }

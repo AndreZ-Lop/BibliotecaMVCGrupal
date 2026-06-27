@@ -5,7 +5,7 @@
 package ec.edu.ec.bibliotecaDAO;
 
 import ec.edu.ups.biblioteca.models.Author;
-import ec.edu.ups.biblioteca.models.Book;
+
 import java.util.List;
 
 public interface DaoAuthor{
@@ -14,7 +14,7 @@ public interface DaoAuthor{
     Author search(int idSearch);
     boolean update(int idSearch, String name,String gender);
     boolean delete(int idSearch);
-    void addBook(Book book,int searchId);
+
     List<Author> getList();
     
 }
