@@ -34,12 +34,12 @@ public class DaoAuthorMemory implements DaoAuthor{
     }
 
     @Override
-    public boolean update(int idSearch,String name, String gender) {
+    public boolean update(int idSearch,String name, String nation) {
         if(authors.isEmpty()) return false;
         for(Author search :authors){
             if(idSearch == search.getiD()){
                 search.setName(name);
-                search.setGender(gender);
+                search.setNationality(nation);
                 return true;
             }
         }
@@ -57,10 +57,4 @@ public class DaoAuthorMemory implements DaoAuthor{
         }
         return false;
     }
-
-    @Override
-    public List<Author> getList() {
-        return authors;
-    }
-
 }

@@ -14,7 +14,5 @@ public interface DaoAuthor{
     Author search(int idSearch);
     boolean update(int idSearch, String name,String gender);
     boolean delete(int idSearch);
-
-    List<Author> getList();
     
 }

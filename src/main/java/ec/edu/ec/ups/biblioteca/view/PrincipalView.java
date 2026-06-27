@@ -4,20 +4,32 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
-
-
+import ec.edu.ups.biblioteca.models.User;
 
 public class PrincipalView extends javax.swing.JFrame {
     
+    //Users View
     private CreateUserView createUserView;
     private SearchUserView searchUserView;
     private UpdateUserView updateUserView;
     private DeleteUserView deleteUserView;
     private ListUsersView listUsersView;
+    
+    //Book views
     private CreateBookView createBookView;
     private SearchBookView searchBookView;
     private DeleteBookView deleteBookView;
     private ListBookView listBookView;
+    
+    //Author views
+    private CreateAuthorView createAuthorView;
+    private SearchAuthorView searchAuthorView;
+    private UpdateAuthorView updateAuthorView;
+    private DeleteAuthorView deleteAuthorView;
+    
+    //Usurio logeado
+    private User userLogged;
+    
 
     /**
      * Creates new form PrincipalView
@@ -25,15 +37,25 @@ public class PrincipalView extends javax.swing.JFrame {
     public PrincipalView() {
         // Dao se debe instanciar una unica vez durante la aprtura de de la interfaz principal 
         initComponents();
+        //Users
         createUserView = new CreateUserView();
         searchUserView = new SearchUserView();
         updateUserView = new UpdateUserView();
         deleteUserView = new DeleteUserView();
         listUsersView = new ListUsersView();
+        //Book
         createBookView = new CreateBookView();
         searchBookView = new SearchBookView();
         deleteBookView = new DeleteBookView();
         listBookView = new ListBookView();
+        //Author
+        createAuthorView = new CreateAuthorView();
+        searchAuthorView = new SearchAuthorView();
+        updateAuthorView = new UpdateAuthorView();
+        deleteAuthorView = new DeleteAuthorView();
+        
+        //Usuario
+        this.userLogged = null;
     }
     
 
@@ -53,6 +75,11 @@ public class PrincipalView extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         desktopPane = new javax.swing.JDesktopPane();
+        jPanel1 = new javax.swing.JPanel();
+        btnLogIn = new javax.swing.JButton();
+        btnList = new javax.swing.JButton();
+        btnReturn = new javax.swing.JButton();
+        btnLogOut = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         userMenu = new javax.swing.JMenu();
         createMenuUser = new javax.swing.JMenuItem();
@@ -62,10 +89,9 @@ public class PrincipalView extends javax.swing.JFrame {
         listMenuUser = new javax.swing.JMenuItem();
         authorMenu = new javax.swing.JMenu();
         createMenuAuthor = new javax.swing.JMenuItem();
+        searchMenuAuthor = new javax.swing.JMenuItem();
         deleteMenuAuthor = new javax.swing.JMenuItem();
         updateMenuAuthor = new javax.swing.JMenuItem();
-        searchMenuAuthor = new javax.swing.JMenuItem();
-        listMenuAuthor = new javax.swing.JMenuItem();
         menuBook = new javax.swing.JMenu();
         createMenuBook = new javax.swing.JMenuItem();
         searchMenuBook = new javax.swing.JMenuItem();
@@ -84,6 +110,46 @@ public class PrincipalView extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnLogIn.setText("Iniciar Sesion");
+
+        btnList.setText("Pedir");
+
+        btnReturn.setText("Devolver");
+
+        btnLogOut.setText("Cerrar Sesion");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnReturn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLogIn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnLogOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnList)
+                    .addComponent(btnLogIn))
+                .addGap(78, 78, 78)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnReturn)
+                    .addComponent(btnLogOut))
+                .addContainerGap(92, Short.MAX_VALUE))
+        );
+
+        desktopPane.add(jPanel1);
+        jPanel1.setBounds(0, 0, 400, 280);
 
         userMenu.setMnemonic('f');
         userMenu.setText("Usuarios");
@@ -123,22 +189,22 @@ public class PrincipalView extends javax.swing.JFrame {
 
         createMenuAuthor.setMnemonic('t');
         createMenuAuthor.setText("Agregar");
+        createMenuAuthor.addActionListener(this::createMenuAuthorActionPerformed);
         authorMenu.add(createMenuAuthor);
         createMenuAuthor.getAccessibleContext().setAccessibleName("agregarProductoMenuItem");
 
+        searchMenuAuthor.setText("Buscar");
+        searchMenuAuthor.addActionListener(this::searchMenuAuthorActionPerformed);
+        authorMenu.add(searchMenuAuthor);
+
         deleteMenuAuthor.setMnemonic('y');
         deleteMenuAuthor.setText("Eliminar");
+        deleteMenuAuthor.addActionListener(this::deleteMenuAuthorActionPerformed);
         authorMenu.add(deleteMenuAuthor);
         deleteMenuAuthor.getAccessibleContext().setAccessibleName("eliminarProdutoMenuItem");
 
         updateMenuAuthor.setText("Actualizar");
         authorMenu.add(updateMenuAuthor);
-
-        searchMenuAuthor.setText("Buscar");
-        authorMenu.add(searchMenuAuthor);
-
-        listMenuAuthor.setText("Listar");
-        authorMenu.add(listMenuAuthor);
 
         menuBar.add(authorMenu);
         authorMenu.getAccessibleContext().setAccessibleName("carritoMenu");
@@ -281,6 +347,38 @@ public class PrincipalView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_listMenuBookActionPerformed
 
+    private void createMenuAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createMenuAuthorActionPerformed
+        // TODO add your handling code here:
+        if(createAuthorView != null || !createAuthorView.isVisible()){
+            desktopPane.remove(createAuthorView);
+            createAuthorView.setVisible(true);
+            desktopPane.add(createAuthorView);
+        }
+    }//GEN-LAST:event_createMenuAuthorActionPerformed
+
+    private void searchMenuAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchMenuAuthorActionPerformed
+        // TODO add your handling code here:
+        if(searchAuthorView != null || !searchAuthorView.isVisible()){
+            desktopPane.remove(searchAuthorView);
+            searchAuthorView.setVisible(true);
+            desktopPane.add(searchAuthorView);
+        }
+    }//GEN-LAST:event_searchMenuAuthorActionPerformed
+
+    private void deleteMenuAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuAuthorActionPerformed
+        // TODO add your handling code here:
+        if(deleteAuthorView != null || !deleteAuthorView.isVisible()){
+            desktopPane.remove(deleteAuthorView);
+            deleteAuthorView.setVisible(true);
+            desktopPane.add(deleteAuthorView);
+        }
+    }//GEN-LAST:event_deleteMenuAuthorActionPerformed
+    public User getUserLogged(){
+        return userLogged;
+    }
+    public void setUserLogged(User userLogged){
+        this.userLogged = userLogged;
+    }
     /**
      * @param args the command line arguments
      */
@@ -319,6 +417,10 @@ public class PrincipalView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu authorMenu;
+    private javax.swing.JButton btnList;
+    private javax.swing.JButton btnLogIn;
+    private javax.swing.JButton btnLogOut;
+    private javax.swing.JButton btnReturn;
     private javax.swing.JMenuItem createMenuAuthor;
     private javax.swing.JMenuItem createMenuBook;
     private javax.swing.JMenuItem createMenuUser;
@@ -330,9 +432,9 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem languageMenuEnglish;
     private javax.swing.JMenuItem languageMenuSpanish;
-    private javax.swing.JMenuItem listMenuAuthor;
     private javax.swing.JMenuItem listMenuBook;
     private javax.swing.JMenuItem listMenuUser;
     private javax.swing.JMenuBar menuBar;
