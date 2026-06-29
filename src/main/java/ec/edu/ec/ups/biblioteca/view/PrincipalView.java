@@ -4,6 +4,13 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import ec.edu.ec.bibliotecaDAO.DaoAuthor;
+import ec.edu.ec.bibliotecaDAO.DaoAuthorMemory;
+import ec.edu.ec.bibliotecaDAO.DaoBook;
+import ec.edu.ec.bibliotecaDAO.DaoBookMemory;
+import ec.edu.ec.bibliotecaDAO.DaoUser;
+import ec.edu.ec.bibliotecaDAO.DaoUserMemory;
+import ec.edu.ups.biblioteca.controller.BibliotecaController;
 import ec.edu.ups.biblioteca.models.User;
 
 public class PrincipalView extends javax.swing.JFrame {
@@ -35,6 +42,14 @@ public class PrincipalView extends javax.swing.JFrame {
     private BorrowsView borrowsView;
     private ListBorrowsView listBorrowsView;
     private ReturnsView returnsView;
+    
+    //DAO
+    private DaoBook daoBook;
+    private DaoUser daoUser;
+    private DaoAuthor daoAuthor;
+    
+    //Conotrollers
+    private BibliotecaController controllerBliblio;
     
     
 
@@ -68,6 +83,16 @@ public class PrincipalView extends javax.swing.JFrame {
         borrowsView = new BorrowsView();
         listBorrowsView = new ListBorrowsView();
         returnsView = new ReturnsView();
+        //Dao
+        daoBook = new DaoBookMemory();
+        daoAuthor = new DaoAuthorMemory();
+        daoUser = new DaoUserMemory();
+        // Controllers
+        
+        controllerBliblio = new BibliotecaController(daoAuthor,daoBook,createBookView,deleteBookView,searchBookView,listBookView);
+        
+        
+                
         
     }
     
