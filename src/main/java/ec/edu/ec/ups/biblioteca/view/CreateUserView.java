@@ -4,6 +4,9 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author y2
@@ -16,6 +19,80 @@ public class CreateUserView extends javax.swing.JInternalFrame {
     public CreateUserView() {
         initComponents();
     }
+
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public void setBtnCancel(JButton btnCancel) {
+        this.btnCancel = btnCancel;
+    }
+
+    public JButton getBtnCreateUser() {
+        return btnCreateUser;
+    }
+
+    public void setBtnCreateUser(JButton btnCreateUser) {
+        this.btnCreateUser = btnCreateUser;
+    }
+
+    public JTextField getMailUser() {
+        return mailUser;
+    }
+
+    public void setMailUser(JTextField mailUser) {
+        this.mailUser = mailUser;
+    }
+
+    public JTextField getPasswordUser() {
+        return passwordUser;
+    }
+
+    public void setPasswordUser(JTextField passwordUser) {
+        this.passwordUser = passwordUser;
+    }
+
+    public JTextField getTxtDayUser() {
+        return txtDayUser;
+    }
+
+    public void setTxtDayUser(JTextField txtDayUser) {
+        this.txtDayUser = txtDayUser;
+    }
+
+    public JTextField getTxtIdUser() {
+        return txtIdUser;
+    }
+
+    public void setTxtIdUser(JTextField txtIdUser) {
+        this.txtIdUser = txtIdUser;
+    }
+
+    public JTextField getTxtMonthUser() {
+        return txtMonthUser;
+    }
+
+    public void setTxtMonthUser(JTextField txtMonthUser) {
+        this.txtMonthUser = txtMonthUser;
+    }
+
+    public JTextField getTxtNameUser() {
+        return txtNameUser;
+    }
+
+    public void setTxtNameUser(JTextField txtNameUser) {
+        this.txtNameUser = txtNameUser;
+    }
+
+    public JTextField getYearUser() {
+        return yearUser;
+    }
+
+    public void setYearUser(JTextField yearUser) {
+        this.yearUser = yearUser;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
