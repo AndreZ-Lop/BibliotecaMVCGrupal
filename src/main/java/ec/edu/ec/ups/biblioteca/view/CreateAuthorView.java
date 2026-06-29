@@ -4,6 +4,9 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author y2
@@ -16,6 +19,79 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
     public CreateAuthorView() {
         initComponents();
     }
+
+    public JButton getBtnCreateUser() {
+        return btnCreateUser;
+    }
+
+    public void setBtnCreateUser(JButton btnCreateUser) {
+        this.btnCreateUser = btnCreateUser;
+    }
+
+    public JTextField getTxtDayUser() {
+        return txtDayUser;
+    }
+
+    public void setTxtDayUser(JTextField txtDayUser) {
+        this.txtDayUser = txtDayUser;
+    }
+
+    public JTextField getTxtGenderAuthor() {
+        return txtGenderAuthor;
+    }
+
+    public void setTxtGenderAuthor(JTextField txtGenderAuthor) {
+        this.txtGenderAuthor = txtGenderAuthor;
+    }
+
+    public JTextField getTxtIdUser() {
+        return txtIdUser;
+    }
+
+    public void setTxtIdUser(JTextField txtIdUser) {
+        this.txtIdUser = txtIdUser;
+    }
+
+    public JTextField getTxtMonthUser() {
+        return txtMonthUser;
+    }
+
+    public void setTxtMonthUser(JTextField txtMonthUser) {
+        this.txtMonthUser = txtMonthUser;
+    }
+
+    public JTextField getTxtNacionality() {
+        return txtNacionality;
+    }
+
+    public void setTxtNacionality(JTextField txtNacionality) {
+        this.txtNacionality = txtNacionality;
+    }
+
+    public JTextField getYearUser() {
+        return txtyearUser;
+    }
+
+    public void setYearUser(JTextField yearUser) {
+        this.txtyearUser = yearUser;
+    }
+
+    public JTextField getTxtNameUser() {
+        return txtNameUser;
+    }
+
+    public void setTxtNameUser(JTextField txtNameUser) {
+        this.txtNameUser = txtNameUser;
+    }
+
+    public JTextField getTxtyearUser() {
+        return txtyearUser;
+    }
+
+    public void setTxtyearUser(JTextField txtyearUser) {
+        this.txtyearUser = txtyearUser;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,7 +118,7 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
         lblMonth = new javax.swing.JLabel();
         txtMonthUser = new javax.swing.JTextField();
         lblYear = new javax.swing.JLabel();
-        yearUser = new javax.swing.JTextField();
+        txtyearUser = new javax.swing.JTextField();
         btnCancel = new javax.swing.JButton();
 
         setClosable(true);
@@ -108,7 +184,7 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblYear)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(yearUser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtyearUser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(btnCreateUser)
@@ -143,7 +219,7 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
                     .addComponent(lblMonth)
                     .addComponent(txtMonthUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblYear)
-                    .addComponent(yearUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtyearUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtGenderAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,6 +276,6 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtMonthUser;
     private javax.swing.JTextField txtNacionality;
     private javax.swing.JTextField txtNameUser;
-    private javax.swing.JTextField yearUser;
+    private javax.swing.JTextField txtyearUser;
     // End of variables declaration//GEN-END:variables
 }

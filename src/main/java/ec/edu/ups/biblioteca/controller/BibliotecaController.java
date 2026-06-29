@@ -11,6 +11,7 @@ import ec.edu.ups.biblioteca.models.Author;
 import ec.edu.ups.biblioteca.models.Book;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.event.InternalFrameAdapter;
@@ -26,6 +27,10 @@ public class BibliotecaController {
     private DeleteBookView deleteBookView;
     private SearchBookView searchBookView;
     private ListBookView listBookView;
+    private CreateAuthorView createAuthorView;
+    private DeleteAuthorView deleteAuthorView;
+    private SearchAuthorView searchAuthorView;
+    private UpdateAuthorView updateAuthorView;
     private DaoAuthor daoAuthor;
 
     public BibliotecaController() {
@@ -34,13 +39,17 @@ public class BibliotecaController {
     
     
 
-    public BibliotecaController(DaoAuthor daoAuthorMemory,DaoBook daoBookMemory, CreateBookView createBookView, DeleteBookView deleteBookView, SearchBookView searchBookView, ListBookView listBookView) {
+    public BibliotecaController(DaoAuthor daoAuthorMemory,DaoBook daoBookMemory, CreateBookView createBookView, DeleteBookView deleteBookView, SearchBookView searchBookView, ListBookView listBookView, CreateAuthorView createAuthorView, DeleteAuthorView deleteAuthorView,SearchAuthorView searchAuthorView,UpdateAuthorView updateAuthorView) {
         this.daoBook = daoBookMemory;
         this.daoAuthor = daoAuthorMemory;
         this.createBookView = createBookView;
         this.deleteBookView = deleteBookView;
         this.searchBookView = searchBookView;
         this.listBookView = listBookView;
+        this.createAuthorView = createAuthorView;
+        this.deleteAuthorView = deleteAuthorView;
+        this.searchAuthorView = searchAuthorView;
+        this.updateAuthorView = updateAuthorView;
         configurateEvents();
     }
     
@@ -48,8 +57,12 @@ public class BibliotecaController {
         configurateEventsCreateBook();
         configurateEventsListBook();
         configurateCloseWindow();
+        configurateEventsDeleteBook();
+        configurateEventsSearchBook();
+        configurateEventsCreateAuthor();
+        configurateEventsDeleteAuthor();
     }
-    
+    //Cotroladores del libro
     public void createBook(){
         String tittle = createBookView.getTxtTittle().getText();
         int isbn = Integer.parseInt(createBookView.getTxtISBN().getText());
@@ -107,4 +120,72 @@ public class BibliotecaController {
             
         });
     }
+    public void deleteBook(){
+        int isbn = Integer.parseInt(deleteBookView.getTxtISBN().getText());
+        daoBook.delete(isbn);
+    }
+    
+    public void configurateEventsDeleteBook(){
+        deleteBookView.getBtnDelete().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                deleteBook();
+            }
+        });
+    }
+    public void searchBook(){
+        int isbn = Integer.parseInt(searchBookView.getTxtISBN().getText());
+        daoBook.search(isbn);
+    }
+    
+    public void configurateEventsSearchBook(){
+        searchBookView.getBtnSearch().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                searchBook();
+            }
+        });
+    }
+    // controladores de autor 
+    public void createAuthor(){
+        String nombre = createAuthorView.getTxtNameUser().getText();
+        int id = Integer.parseInt(createAuthorView.getTxtIdUser().getText());
+        int day = Integer.parseInt(createAuthorView.getTxtDayUser().getText());
+        int month = Integer.parseInt(createAuthorView.getTxtMonthUser().getText());
+        int year = Integer.parseInt(createAuthorView.getTxtyearUser().getText());
+        List<Book> book = new ArrayList<>();
+        Date date = new Date(year-1900,month-1,day);
+        String genreA = createAuthorView.getTxtGenderAuthor().getText();
+        String national = createAuthorView.getTxtNacionality().getText();
+        Author author = new Author(national,genreA,book,nombre,id,date);
+        daoAuthor.create(author);        
+    }
+    
+    public void configurateEventsCreateAuthor(){
+        createAuthorView.getBtnCreateUser().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                createAuthor();
+            }
+        });
+    }
+    
+    public void deleteAuthor(){
+        int isbn = Integer.parseInt(deleteAuthorView.getTxtDeleteAuthor().getText());
+        daoAuthor.delete(isbn);
+    }
+    public void configurateEventsDeleteAuthor(){
+        deleteAuthorView.getBtnDelete().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                deleteAuthor();
+            }
+        });
+    }
+    //public void searchAuthor(){
+        //int isbn
+    //}
+    
+        
 }
+    
