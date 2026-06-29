@@ -4,6 +4,10 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JTextField;
+
 /**
  *
  * @author y2
@@ -16,6 +20,112 @@ public class CreateBookView extends javax.swing.JInternalFrame {
     public CreateBookView() {
         initComponents();
     }
+
+    public JButton getBtnAdd() {
+        return btnAdd;
+    }
+
+    public void setBtnAdd(JButton btnAdd) {
+        this.btnAdd = btnAdd;
+    }
+
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public void setBtnCancel(JButton btnCancel) {
+        this.btnCancel = btnCancel;
+    }
+
+    public JButton getBtnSearch() {
+        return btnSearch;
+    }
+
+    public void setBtnSearch(JButton btnSearch) {
+        this.btnSearch = btnSearch;
+    }
+
+    public JTextField getTxtBookAuthor() {
+        return txtBookAuthor;
+    }
+
+    public void setTxtBookAuthor(JTextField txtBookAuthor) {
+        this.txtBookAuthor = txtBookAuthor;
+    }
+
+    public JTextField getTxtBookLanguage() {
+        return txtBookLanguage;
+    }
+
+    public void setTxtBookLanguage(JTextField txtBookLanguage) {
+        this.txtBookLanguage = txtBookLanguage;
+    }
+
+    public JTextField getTxtDay() {
+        return txtDay;
+    }
+
+    public void setTxtDay(JTextField txtDay) {
+        this.txtDay = txtDay;
+    }
+
+    public JTextField getTxtGenre() {
+        return txtGenre;
+    }
+
+    public void setTxtGenre(JTextField txtGenre) {
+        this.txtGenre = txtGenre;
+    }
+
+    public JTextField getTxtISBN() {
+        return txtISBN;
+    }
+
+    public void setTxtISBN(JTextField txtISBN) {
+        this.txtISBN = txtISBN;
+    }
+
+    public JTextField getTxtMonth() {
+        return txtMonth;
+    }
+
+    public void setTxtMonth(JTextField txtMonth) {
+        this.txtMonth = txtMonth;
+    }
+
+    public JTextField getTxtTittle() {
+        return txtTittle;
+    }
+
+    public void setTxtTittle(JTextField txtTittle) {
+        this.txtTittle = txtTittle;
+    }
+
+    public JTextField getTxtYear() {
+        return txtYear;
+    }
+
+    public void setTxtYear(JTextField txtYear) {
+        this.txtYear = txtYear;
+    }
+
+    public JCheckBox getCheckBoxNo() {
+        return checkBoxNo;
+    }
+
+    public void setCheckBoxNo(JCheckBox checkBoxNo) {
+        this.checkBoxNo = checkBoxNo;
+    }
+
+    public JCheckBox getCheckBoxYes() {
+        return checkBoxYes;
+    }
+
+    public void setCheckBoxYes(JCheckBox checkBoxYes) {
+        this.checkBoxYes = checkBoxYes;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

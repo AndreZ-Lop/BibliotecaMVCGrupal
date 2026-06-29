@@ -4,6 +4,9 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import ec.edu.ups.biblioteca.models.Book;
+import java.util.List;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,8 +22,35 @@ public class ListBookView extends javax.swing.JInternalFrame {
         model = new DefaultTableModel();
         initComponents();
         configurarTable();
+        
+        
     }
 
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public void setBtnCancel(JButton btnCancel) {
+        this.btnCancel = btnCancel;
+    }
+
+    public JButton getBtnList() {
+        return btnList;
+    }
+
+    public void setBtnList(JButton btnList) {
+        this.btnList = btnList;
+    }
+
+    public DefaultTableModel getModel() {
+        return model;
+    }
+
+    public void setModel(DefaultTableModel model) {
+        this.model = model;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,6 +85,7 @@ public class ListBookView extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tblBook);
 
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(this::btnCancelActionPerformed);
 
         btnList.setText("Listar");
 
@@ -95,6 +126,11 @@ public class ListBookView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnCancelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
@@ -110,5 +146,14 @@ public class ListBookView extends javax.swing.JInternalFrame {
         model.addColumn("Restricciones");
         model.addColumn("ISBN");
         tblBook.setModel(model);
+    }
+    
+    public void chargeData(List<Book> book){
+        model.setRowCount(0);
+        for(Book books: book){
+            Object[] fila = {books.getTitulo(),books.getAutorLibro().getName(),books.getRestriccionesLibro(),books.getISBN()};
+            model.addRow(fila);
+        }
+       
     }
 }
