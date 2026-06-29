@@ -14,7 +14,8 @@ import java.util.List;
 public interface DaoUser {
     void create(User user);
     User search(int idSearch);
-    boolean update(int idSearch,String newMail,String newPassword,String name);
+    boolean getIndexUpdate(int idSearch);
+    void update(String newMail,String newPassword,String name);
     boolean delete(int idSearch);
     List<User> listUsers();
     
