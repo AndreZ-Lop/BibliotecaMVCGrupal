@@ -76,7 +76,7 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="lblYear" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="yearUser" min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="txtyearUser" min="-2" pref="31" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
@@ -122,7 +122,7 @@
                       <Component id="lblMonth" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtMonthUser" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblYear" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="yearUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtyearUser" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -206,7 +206,7 @@
             <Property name="text" type="java.lang.String" value="A&#xf1;o"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="yearUser">
+        <Component class="javax.swing.JTextField" name="txtyearUser">
         </Component>
         <Component class="javax.swing.JButton" name="btnCancel">
           <Properties>

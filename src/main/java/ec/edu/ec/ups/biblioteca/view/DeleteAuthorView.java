@@ -4,6 +4,9 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author y2
@@ -17,6 +20,22 @@ public class DeleteAuthorView extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public JButton getBtnDelete() {
+        return btnDelete;
+    }
+
+    public void setBtnDelete(JButton btnDelete) {
+        this.btnDelete = btnDelete;
+    }
+
+    public JTextField getTxtDeleteAuthor() {
+        return txtDeleteAuthor;
+    }
+
+    public void setTxtDeleteAuthor(JTextField txtDeleteAuthor) {
+        this.txtDeleteAuthor = txtDeleteAuthor;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
