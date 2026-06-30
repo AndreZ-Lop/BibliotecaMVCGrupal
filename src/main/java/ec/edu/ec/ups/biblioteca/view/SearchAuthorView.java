@@ -4,6 +4,9 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author y2
@@ -16,6 +19,23 @@ public class SearchAuthorView extends javax.swing.JInternalFrame {
     public SearchAuthorView() {
         initComponents();
     }
+
+    public JButton getBtnSearch() {
+        return btnSearch;
+    }
+
+    public void setBtnSearch(JButton btnSearch) {
+        this.btnSearch = btnSearch;
+    }
+
+    public JTextField getTxtAuthorSearch() {
+        return txtAuthorSearch;
+    }
+
+    public void setTxtAuthorSearch(JTextField txtAuthorSearch) {
+        this.txtAuthorSearch = txtAuthorSearch;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

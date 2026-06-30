@@ -72,7 +72,7 @@
                           <Component id="btnCancel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="70" max="32767" attributes="0"/>
+                  <EmptySpace pref="45" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -116,12 +116,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblNewNation">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nuevo Correo"/>
+            <Property name="text" type="java.lang.String" value="Nuevo Nombre"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblNewName">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nuevo Nombre"/>
+            <Property name="text" type="java.lang.String" value="Nueva Nacionalidad"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnUpdate">

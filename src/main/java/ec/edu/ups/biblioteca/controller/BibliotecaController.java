@@ -6,6 +6,8 @@ package ec.edu.ups.biblioteca.controller;
 
 import ec.edu.ec.bibliotecaDAO.DaoBook;
 import ec.edu.ec.bibliotecaDAO.DaoAuthor;
+import ec.edu.ec.bibliotecaDAO.DaoAuthorMemory;
+import ec.edu.ec.bibliotecaDAO.DaoBookMemory;
 import ec.edu.ec.ups.biblioteca.view.*;
 import ec.edu.ups.biblioteca.models.Author;
 import ec.edu.ups.biblioteca.models.Book;
@@ -32,17 +34,20 @@ public class BibliotecaController {
     public BibliotecaController() {
         configurateEvents();
     }
-    
-    
 
     public BibliotecaController(DaoAuthor daoAuthorMemory,DaoBook daoBookMemory, CreateBookView createBookView, DeleteBookView deleteBookView, SearchBookView searchBookView, ListBookView listBookView){
         this.daoAuthor = daoAuthorMemory;
+        this.daoBook = daoBookMemory;
         this.createBookView = createBookView;
         this.deleteBookView = deleteBookView;
         this.searchBookView = searchBookView;
         this.listBookView = listBookView;
         configurateEvents();
     }
+    
+    
+
+    
     
     public void configurateEvents(){
         configurateEventsCreateBook();
