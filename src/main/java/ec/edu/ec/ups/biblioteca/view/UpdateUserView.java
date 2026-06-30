@@ -4,6 +4,9 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author y2
@@ -16,6 +19,64 @@ public class UpdateUserView extends javax.swing.JInternalFrame {
     public UpdateUserView() {
         initComponents();
     }
+
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public void setBtnCancel(JButton btnCancel) {
+        this.btnCancel = btnCancel;
+    }
+
+    public JButton getBtnSearch() {
+        return btnSearch;
+    }
+
+    public void setBtnSearch(JButton btnSearch) {
+        this.btnSearch = btnSearch;
+    }
+
+    public JButton getBtnUpdate() {
+        return btnUpdate;
+    }
+
+    public void setBtnUpdate(JButton btnUpdate) {
+        this.btnUpdate = btnUpdate;
+    }
+
+    public JTextField getTxtIdSearch() {
+        return txtIdSearch;
+    }
+
+    public void setTxtIdSearch(JTextField txtIdSearch) {
+        this.txtIdSearch = txtIdSearch;
+    }
+
+    public JTextField getTxtNewMail() {
+        return txtNewMail;
+    }
+
+    public void setTxtNewMail(JTextField txtNewMail) {
+        this.txtNewMail = txtNewMail;
+    }
+
+    public JTextField getTxtNewName() {
+        return txtNewName;
+    }
+
+    public void setTxtNewName(JTextField txtNewName) {
+        this.txtNewName = txtNewName;
+    }
+
+    public JTextField getTxtNewPassword() {
+        return txtNewPassword;
+    }
+
+    public void setTxtNewPassword(JTextField txtNewPassword) {
+        this.txtNewPassword = txtNewPassword;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,8 +114,15 @@ public class UpdateUserView extends javax.swing.JInternalFrame {
         lblNewName.setText("Nuevo Nombre");
 
         btnUpdate.setText("Actualizar");
+        btnUpdate.setEnabled(false);
 
         btnCancel.setText("Cancelar");
+
+        txtNewMail.setEnabled(false);
+
+        txtNewPassword.setEnabled(false);
+
+        txtNewName.setEnabled(false);
 
         btnSearch.setText("Buscar");
 

@@ -12,6 +12,7 @@ import ec.edu.ec.bibliotecaDAO.DaoUser;
 import ec.edu.ec.bibliotecaDAO.DaoUserMemory;
 import ec.edu.ups.biblioteca.controller.AuthorController;
 import ec.edu.ups.biblioteca.controller.BibliotecaController;
+import ec.edu.ups.biblioteca.controller.UserController;
 import ec.edu.ups.biblioteca.models.User;
 
 public class PrincipalView extends javax.swing.JFrame {
@@ -52,7 +53,7 @@ public class PrincipalView extends javax.swing.JFrame {
     //Conotrollers
     private BibliotecaController controllerBliblio;
     private AuthorController authorController;
-    
+    private UserController userController
     
 
     /**
@@ -92,7 +93,7 @@ public class PrincipalView extends javax.swing.JFrame {
         // Controllers
         
         controllerBliblio = new BibliotecaController(daoAuthor,daoBook,createBookView,deleteBookView,searchBookView,listBookView);
-        authorController = new AuthorController(createAuthorView, deleteAuthorView, searchAuthorView, updateAuthorView, daoAuthor);
+        userController = new UserController(createUserView,deleteUserView,searchUserView,updateUserView,listUsersView,daoUser);
         
         
                 

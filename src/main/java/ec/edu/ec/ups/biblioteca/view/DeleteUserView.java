@@ -4,6 +4,9 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author y2
@@ -16,6 +19,31 @@ public class DeleteUserView extends javax.swing.JInternalFrame {
     public DeleteUserView() {
         initComponents();
     }
+
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public void setBtnCancel(JButton btnCancel) {
+        this.btnCancel = btnCancel;
+    }
+
+    public JButton getBtnDelete() {
+        return btnDelete;
+    }
+
+    public void setBtnDelete(JButton btnDelete) {
+        this.btnDelete = btnDelete;
+    }
+
+    public JTextField getTxtDeleteUser() {
+        return txtDeleteUser;
+    }
+
+    public void setTxtDeleteUser(JTextField txtDeleteUser) {
+        this.txtDeleteUser = txtDeleteUser;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -5,15 +5,27 @@
 package ec.edu.ec.bibliotecaDAO;
 
 import ec.edu.ups.biblioteca.models.User;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DaoUserMemory implements DaoUser{
     
     private List<User> users;
+    private int indexSearch;
 
     public DaoUserMemory() {
+        users = new ArrayList<>();
+        this.indexSearch = -1;
     }
 
+    public int getIndexSearch() {
+        return indexSearch;
+    }
+
+    public void setIndexSearch(int indexSearch) {
+        this.indexSearch = indexSearch;
+    }
+    
     @Override
     public void create(User user) {
         users.add(user);
@@ -31,22 +43,20 @@ public class DaoUserMemory implements DaoUser{
     }
 
     @Override
-    public boolean update(int idSearch, String newMail, String newPassword, String name) {
+    public boolean getIndexUpdate(int idSearch){
         if(users.isEmpty())return false;
-        for(User search: users){
-            if(idSearch == search.getiD()){
-                search.setName(name);
-                search.setPassword(newPassword);
-                search.setMail(newMail);
+        for(int i = 0;i<users.size();i++){
+            if(idSearch == users.get(i).getiD()){
+                this.indexSearch = i;
                 return true;
             }
-                
         }
         return false;
     }
-
+    
     @Override
     public boolean delete(int idSearch) {
+        if(users.isEmpty())return false;
         for(int i = 0;i < users.size();i++){
             if(idSearch == users.get(i).getiD()){
                 users.remove(i);
@@ -59,6 +69,16 @@ public class DaoUserMemory implements DaoUser{
     @Override
     public List<User> listUsers() {
         return users;
+    }
+
+    @Override
+    public void update(String newMail, String newPassword, String name) {
+        int index = indexSearch;
+        users.get(index).setMail(newMail);
+        users.get(index).setPassword(newPassword);
+        users.get(index).setName(name);
+        this.indexSearch = -1;
+   
     }
     
 }

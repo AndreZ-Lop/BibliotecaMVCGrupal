@@ -4,6 +4,9 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import ec.edu.ups.biblioteca.models.User;
+import java.util.List;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,6 +23,30 @@ public class ListUsersView extends javax.swing.JInternalFrame {
         configurarTabla();
     }
 
+    public JButton getBtnList() {
+        return btnList;
+    }
+
+    public void setBtnList(JButton btnList) {
+        this.btnList = btnList;
+    }
+
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public void setBtnCancel(JButton btnCancel) {
+        this.btnCancel = btnCancel;
+    }
+
+    public DefaultTableModel getModel() {
+        return model;
+    }
+
+    public void setModel(DefaultTableModel model) {
+        this.model = model;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,6 +128,13 @@ public class ListUsersView extends javax.swing.JInternalFrame {
         tblUsers.setModel(model);
         
         
+    }
+    
+    public void listElements(List<User> users){
+        for(User user: users){
+            Object[] fila = {user.getName(),user.getMail(),user.isRestrictions()};
+            model.addRow(fila);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
