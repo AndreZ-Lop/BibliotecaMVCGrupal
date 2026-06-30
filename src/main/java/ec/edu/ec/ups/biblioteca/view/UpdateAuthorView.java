@@ -4,6 +4,9 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author y2
@@ -16,6 +19,47 @@ public class UpdateAuthorView extends javax.swing.JInternalFrame {
     public UpdateAuthorView() {
         initComponents();
     }
+
+    public JButton getBtnSearch() {
+        return btnSearch;
+    }
+
+    public void setBtnSearch(JButton btnSearch) {
+        this.btnSearch = btnSearch;
+    }
+
+    public JButton getBtnUpdate() {
+        return btnUpdate;
+    }
+
+    public void setBtnUpdate(JButton btnUpdate) {
+        this.btnUpdate = btnUpdate;
+    }
+
+    public JTextField getTxtIdSearch() {
+        return txtIdSearch;
+    }
+
+    public void setTxtIdSearch(JTextField txtIdSearch) {
+        this.txtIdSearch = txtIdSearch;
+    }
+
+    public JTextField getTxtNewName() {
+        return txtNewName;
+    }
+
+    public void setTxtNewName(JTextField txtNewName) {
+        this.txtNewName = txtNewName;
+    }
+
+    public JTextField getTxtNewNation() {
+        return txtNewNation;
+    }
+
+    public void setTxtNewNation(JTextField txtNewNation) {
+        this.txtNewNation = txtNewNation;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,9 +88,9 @@ public class UpdateAuthorView extends javax.swing.JInternalFrame {
 
         lblUpdateSearch.setText("Ingrese el numero de cedula del autor");
 
-        lblNewNation.setText("Nuevo Correo");
+        lblNewNation.setText("Nuevo Nombre");
 
-        lblNewName.setText("Nuevo Nombre");
+        lblNewName.setText("Nueva Nacionalidad");
 
         btnUpdate.setText("Actualizar");
 
@@ -82,7 +126,7 @@ public class UpdateAuthorView extends javax.swing.JInternalFrame {
                         .addComponent(btnUpdate)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancel)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -10,6 +10,7 @@ import ec.edu.ec.bibliotecaDAO.DaoBook;
 import ec.edu.ec.bibliotecaDAO.DaoBookMemory;
 import ec.edu.ec.bibliotecaDAO.DaoUser;
 import ec.edu.ec.bibliotecaDAO.DaoUserMemory;
+import ec.edu.ups.biblioteca.controller.AuthorController;
 import ec.edu.ups.biblioteca.controller.BibliotecaController;
 import ec.edu.ups.biblioteca.models.User;
 
@@ -50,6 +51,7 @@ public class PrincipalView extends javax.swing.JFrame {
     
     //Conotrollers
     private BibliotecaController controllerBliblio;
+    private AuthorController authorController;
     
     
 
@@ -90,6 +92,7 @@ public class PrincipalView extends javax.swing.JFrame {
         // Controllers
         
         controllerBliblio = new BibliotecaController(daoAuthor,daoBook,createBookView,deleteBookView,searchBookView,listBookView);
+        authorController = new AuthorController(createAuthorView, deleteAuthorView, searchAuthorView, updateAuthorView, daoAuthor);
         
         
                 
@@ -270,6 +273,7 @@ public class PrincipalView extends javax.swing.JFrame {
         deleteMenuAuthor.getAccessibleContext().setAccessibleName("eliminarProdutoMenuItem");
 
         updateMenuAuthor.setText("Actualizar");
+        updateMenuAuthor.addActionListener(this::updateMenuAuthorActionPerformed);
         authorMenu.add(updateMenuAuthor);
 
         menuBar.add(authorMenu);
@@ -474,9 +478,18 @@ public class PrincipalView extends javax.swing.JFrame {
             desktopPane.remove(listBorrowsView);
             listBorrowsView.setVisible(true);
             desktopPane.add(listBorrowsView);
-            
+        
         }
     }//GEN-LAST:event_btnListActionPerformed
+
+    private void updateMenuAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMenuAuthorActionPerformed
+        // TODO add your handling code here:
+        if(updateAuthorView != null || !updateAuthorView.isVisible()){
+            desktopPane.remove(updateAuthorView);
+            searchAuthorView.setVisible(true);
+            desktopPane.add(updateAuthorView);
+        }
+    }//GEN-LAST:event_updateMenuAuthorActionPerformed
     public User getUserLogged(){
         return userLogged;
     }

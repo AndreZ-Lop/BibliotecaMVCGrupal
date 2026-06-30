@@ -6,6 +6,8 @@ package ec.edu.ups.biblioteca.controller;
 
 import ec.edu.ec.bibliotecaDAO.DaoBook;
 import ec.edu.ec.bibliotecaDAO.DaoAuthor;
+import ec.edu.ec.bibliotecaDAO.DaoAuthorMemory;
+import ec.edu.ec.bibliotecaDAO.DaoBookMemory;
 import ec.edu.ec.ups.biblioteca.view.*;
 import ec.edu.ups.biblioteca.models.Author;
 import ec.edu.ups.biblioteca.models.Book;
@@ -27,31 +29,25 @@ public class BibliotecaController {
     private DeleteBookView deleteBookView;
     private SearchBookView searchBookView;
     private ListBookView listBookView;
-    private CreateAuthorView createAuthorView;
-    private DeleteAuthorView deleteAuthorView;
-    private SearchAuthorView searchAuthorView;
-    private UpdateAuthorView updateAuthorView;
     private DaoAuthor daoAuthor;
 
     public BibliotecaController() {
         configurateEvents();
     }
-    
-    
 
-    public BibliotecaController(DaoAuthor daoAuthorMemory,DaoBook daoBookMemory, CreateBookView createBookView, DeleteBookView deleteBookView, SearchBookView searchBookView, ListBookView listBookView, CreateAuthorView createAuthorView, DeleteAuthorView deleteAuthorView,SearchAuthorView searchAuthorView,UpdateAuthorView updateAuthorView) {
-        this.daoBook = daoBookMemory;
+    public BibliotecaController(DaoAuthor daoAuthorMemory,DaoBook daoBookMemory, CreateBookView createBookView, DeleteBookView deleteBookView, SearchBookView searchBookView, ListBookView listBookView){
         this.daoAuthor = daoAuthorMemory;
+        this.daoBook = daoBookMemory;
         this.createBookView = createBookView;
         this.deleteBookView = deleteBookView;
         this.searchBookView = searchBookView;
         this.listBookView = listBookView;
-        this.createAuthorView = createAuthorView;
-        this.deleteAuthorView = deleteAuthorView;
-        this.searchAuthorView = searchAuthorView;
-        this.updateAuthorView = updateAuthorView;
         configurateEvents();
     }
+    
+    
+
+    
     
     public void configurateEvents(){
         configurateEventsCreateBook();
@@ -59,8 +55,6 @@ public class BibliotecaController {
         configurateCloseWindow();
         configurateEventsDeleteBook();
         configurateEventsSearchBook();
-        configurateEventsCreateAuthor();
-        configurateEventsDeleteAuthor();
     }
     //Cotroladores del libro
     public void createBook(){
@@ -146,45 +140,7 @@ public class BibliotecaController {
             }
         });
     }
-    // controladores de autor 
-    public void createAuthor(){
-        String nombre = createAuthorView.getTxtNameUser().getText();
-        int id = Integer.parseInt(createAuthorView.getTxtIdUser().getText());
-        int day = Integer.parseInt(createAuthorView.getTxtDayUser().getText());
-        int month = Integer.parseInt(createAuthorView.getTxtMonthUser().getText());
-        int year = Integer.parseInt(createAuthorView.getTxtyearUser().getText());
-        List<Book> book = new ArrayList<>();
-        Date date = new Date(year-1900,month-1,day);
-        String genreA = createAuthorView.getTxtGenderAuthor().getText();
-        String national = createAuthorView.getTxtNacionality().getText();
-        Author author = new Author(national,genreA,book,nombre,id,date);
-        daoAuthor.create(author);        
-    }
-    
-    public void configurateEventsCreateAuthor(){
-        createAuthorView.getBtnCreateUser().addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                createAuthor();
-            }
-        });
-    }
-    
-    public void deleteAuthor(){
-        int isbn = Integer.parseInt(deleteAuthorView.getTxtDeleteAuthor().getText());
-        daoAuthor.delete(isbn);
-    }
-    public void configurateEventsDeleteAuthor(){
-        deleteAuthorView.getBtnDelete().addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
-                deleteAuthor();
-            }
-        });
-    }
-    //public void searchAuthor(){
-        //int isbn
-    //}
+   
     
         
 }
