@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -81,7 +82,15 @@ public class AuthorController {
     }
     public void searchAuthor(){
         int id= Integer.parseInt(searchAuthorView.getTxtAuthorSearch().getText());
-        daoAuthor.search(id);
+        Author authorFounded = daoAuthor.search(id);
+        if(authorFounded == null ){
+            JOptionPane.showMessageDialog(searchAuthorView,"No se encontro el autor");
+        }else{
+            JOptionPane.showMessageDialog(searchAuthorView, """
+                                                          Autor Encontrado
+                                                          Nombre: """ + authorFounded.getName() + "\nNacionalidad: " + authorFounded.getNationality()
+                                                          + "\nCedula: " + authorFounded.getiD());
+        }
     }
     
     public void  configurateEventsSearchAuthor(){
@@ -93,28 +102,37 @@ public class AuthorController {
         });
     }
     
-    public void updateAuthor(){
-        int id = Integer.parseInt(updateAuthorView.getTxtIdSearch().getText());
-        daoAuthor.search(id);
-        String correo = updateAuthorView.getTxtNewName().getText();
-        String nation = updateAuthorView.getTxtNewNation().getText();
-        Author author = daoAuthor.search(Integer.parseInt(updateAuthorView.getTxtIdSearch().getText()));
-        daoAuthor.update(id, nation, correo);
-        
-        
+     public void configurateShowOptions(){
+        if(!daoAuthor.getIndexUpdate(Integer.parseInt(updateAuthorView.getTxtIdSearch().getText()))){
+            JOptionPane.showMessageDialog(updateAuthorView,"Usuario no encontrado");
+            updateAuthorView.getBtnUpdate().setEnabled(false);
+            updateAuthorView.getTxtNewName().setEnabled(false);
+            updateAuthorView.getTxtNewNation().setEnabled(false);
+        }else{
+            updateAuthorView.getBtnUpdate().setEnabled(true);
+            updateAuthorView.getTxtNewName().setEnabled(true);
+            updateAuthorView.getTxtNewNation().setEnabled(true);
+        }
+    }
+    
+    //actualizar
+    public void configurateUpdate(){
+        String newName = updateAuthorView.getTxtNewName().getText();
+        String newNation = updateAuthorView.getTxtNewNation().getText();
+        daoAuthor.update(newName,newNation);
     }
     
     public void configurateEventsUpdateAuthor(){
         updateAuthorView.getBtnSearch().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                searchAuthor();
+               configurateShowOptions();
             }
         });
         updateAuthorView.getBtnUpdate().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                updateAuthor();
+                configurateUpdate();
             }
         });
     }

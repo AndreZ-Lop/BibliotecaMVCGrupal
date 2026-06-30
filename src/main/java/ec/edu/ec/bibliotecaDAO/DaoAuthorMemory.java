@@ -11,9 +11,11 @@ import java.util.List;
 
 public class DaoAuthorMemory implements DaoAuthor{
     private List<Author> authors;
+    private int indexSearch;
 
     public DaoAuthorMemory() {
         authors = new ArrayList<>();
+        this.indexSearch = -1;
     }
 
     @Override
@@ -32,20 +34,6 @@ public class DaoAuthorMemory implements DaoAuthor{
         }
         return null;
     }
-
-    @Override
-    public boolean update(int idSearch,String name, String nation) {
-        if(authors.isEmpty()) return false;
-        for(Author search :authors){
-            if(idSearch == search.getiD()){
-                search.setName(name);
-                search.setNationality(nation);
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public boolean delete(int idSearch) {
         if(authors.isEmpty()) return false;
@@ -56,5 +44,25 @@ public class DaoAuthorMemory implements DaoAuthor{
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean getIndexUpdate(int idSearch) {
+        if(authors.isEmpty())return false;
+        for(int i = 0;i<authors.size();i++){
+            if(idSearch == authors.get(i).getiD()){
+                this.indexSearch = i;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void update(String nation, String name) {
+        int index = this.indexSearch;
+        authors.get(index).setName(name);
+        authors.get(index).setNationality(nation);
+        this.indexSearch = -1;
     }
 }

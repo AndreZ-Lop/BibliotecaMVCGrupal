@@ -53,7 +53,7 @@ public class PrincipalView extends javax.swing.JFrame {
     //Conotrollers
     private BibliotecaController controllerBliblio;
     private AuthorController authorController;
-    private UserController userController
+    private UserController userController;
     
 
     /**
@@ -91,8 +91,8 @@ public class PrincipalView extends javax.swing.JFrame {
         daoAuthor = new DaoAuthorMemory();
         daoUser = new DaoUserMemory();
         // Controllers
-        
         controllerBliblio = new BibliotecaController(daoAuthor,daoBook,createBookView,deleteBookView,searchBookView,listBookView);
+        authorController = new AuthorController(createAuthorView,deleteAuthorView,searchAuthorView,updateAuthorView,daoAuthor);
         userController = new UserController(createUserView,deleteUserView,searchUserView,updateUserView,listUsersView,daoUser);
         
         
@@ -487,7 +487,7 @@ public class PrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(updateAuthorView != null || !updateAuthorView.isVisible()){
             desktopPane.remove(updateAuthorView);
-            searchAuthorView.setVisible(true);
+            updateAuthorView.setVisible(true);
             desktopPane.add(updateAuthorView);
         }
     }//GEN-LAST:event_updateMenuAuthorActionPerformed
