@@ -12,7 +12,8 @@ public interface DaoAuthor{
     
     void create(Author author);
     Author search(int idSearch);
-    boolean update(int idSearch, String name,String gender);
+    boolean getIndexUpdate(int idSearch);
+    void update(String nation,String name);
     boolean delete(int idSearch);
     
 }
