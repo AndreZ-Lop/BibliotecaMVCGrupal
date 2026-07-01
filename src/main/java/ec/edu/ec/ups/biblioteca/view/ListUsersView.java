@@ -125,6 +125,7 @@ public class ListUsersView extends javax.swing.JInternalFrame {
         model.addColumn("Nombre");
         model.addColumn("Correo");
         model.addColumn("Restricciones");
+        model.addColumn("Puede solicitar");
         tblUsers.setModel(model);
         
         
@@ -132,7 +133,7 @@ public class ListUsersView extends javax.swing.JInternalFrame {
     
     public void listElements(List<User> users){
         for(User user: users){
-            Object[] fila = {user.getName(),user.getMail(),user.isRestrictions()};
+            Object[] fila = {user.getName(),user.getMail(),user.isRestrictions(),user.isCanRequest()};
             model.addRow(fila);
         }
     }

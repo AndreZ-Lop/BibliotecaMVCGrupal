@@ -4,6 +4,13 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import ec.edu.ups.biblioteca.models.BookBorrow;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,7 +27,41 @@ public class ListBorrowsView extends javax.swing.JInternalFrame {
     public ListBorrowsView() {
         initComponents();
         model = new DefaultTableModel();
+        configurarTable();
     }
+
+    public DefaultTableModel getModel() {
+        return model;
+    }
+
+    public void setModel(DefaultTableModel model) {
+        this.model = model;
+    }
+
+    public JButton getBtnBorrowList() {
+        return btnBorrowList;
+    }
+
+    public void setBtnBorrowList(JButton btnBorrowList) {
+        this.btnBorrowList = btnBorrowList;
+    }
+
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public void setBtnCancel(JButton btnCancel) {
+        this.btnCancel = btnCancel;
+    }
+
+    public JTable getTblBorrows() {
+        return tblBorrows;
+    }
+
+    public void setTblBorrows(JTable tblBorrows) {
+        this.tblBorrows = tblBorrows;
+    }
+    
     
     public void configurarTable(){
         model.addColumn("Nombre");
@@ -28,6 +69,15 @@ public class ListBorrowsView extends javax.swing.JInternalFrame {
         model.addColumn("Plazo Maximo");
         model.addColumn("Numero de Prestamo");
         tblBorrows.setModel(model);
+    }
+    
+    public void listElements(List<BookBorrow> users){
+        for(BookBorrow borrow: users){
+            DateTimeFormatter formatoMesDia = DateTimeFormatter.ofPattern("dd 'de' MMMM");
+            String fechaFormateada = borrow.getReturnDate().format(formatoMesDia);
+            Object[] fila = {borrow.getUserBook().getName(),borrow.getBookBorrowed().getTitulo(),fechaFormateada,borrow.getTransactionNumber()};
+            model.addRow(fila);
+        }
     }
 
     /**

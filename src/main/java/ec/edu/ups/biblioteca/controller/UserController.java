@@ -82,12 +82,12 @@ public class UserController {
         if(age<18){
             int option = JOptionPane.showConfirmDialog(createUserView,"Su cuenta tendra restriccione de edad desea continuar?");
             if(option == JOptionPane.YES_OPTION){
-                daoUser.create(new User(mail,password,true,name,iD,date));
+                daoUser.create(new User(mail,password,true,name,iD,date,true));
             }else{
                 createUserView.dispose();
             }
         }else{
-            daoUser.create(new User(mail,password,false,name,iD,date));
+            daoUser.create(new User(mail,password,false,name,iD,date,true));
         }
     }
     /*

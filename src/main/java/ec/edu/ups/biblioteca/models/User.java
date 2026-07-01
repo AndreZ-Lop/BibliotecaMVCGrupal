@@ -6,15 +6,17 @@ public class User extends Person{
     private String mail;
     private String password;
     private boolean restrictions;
+    private boolean canRequest;
 
     public User() {
     }
 
-    public User(String mail, String password, boolean restrictions,String name, int iD, Date birthday) {
+    public User(String mail, String password, boolean restrictions,String name, int iD, Date birthday,boolean canRequest) {
         super(name,iD,birthday);
         this.mail = mail;
         this.password = password;
         this.restrictions = restrictions;
+        this.canRequest = canRequest;
     }
 
     public String getMail() {
@@ -41,5 +43,11 @@ public class User extends Person{
         this.restrictions = restrictions;
     }
 
-    
+    public boolean isCanRequest() {
+        return canRequest;
+    }
+
+    public void setCanRequest(boolean canRequest) {
+        this.canRequest = canRequest;
+    }
 }

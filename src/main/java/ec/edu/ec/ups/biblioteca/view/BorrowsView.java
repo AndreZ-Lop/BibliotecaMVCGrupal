@@ -4,6 +4,9 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author y2
@@ -16,6 +19,31 @@ public class BorrowsView extends javax.swing.JInternalFrame {
     public BorrowsView() {
         initComponents();
     }
+
+    public JButton getBtnBorrow() {
+        return btnBorrow;
+    }
+
+    public void setBtnBorrow(JButton btnBorrow) {
+        this.btnBorrow = btnBorrow;
+    }
+
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public void setBtnCancel(JButton btnCancel) {
+        this.btnCancel = btnCancel;
+    }
+
+    public JTextField getTxtBorrows() {
+        return txtBorrows;
+    }
+
+    public void setTxtBorrows(JTextField txtBorrows) {
+        this.txtBorrows = txtBorrows;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

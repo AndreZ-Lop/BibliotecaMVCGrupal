@@ -182,7 +182,7 @@ public class CreateBookView extends javax.swing.JInternalFrame {
 
         lblBookLanguage.setText("Idioma del libro");
 
-        lblBookAuthor.setText("Ingrese el autor ");
+        lblBookAuthor.setText("Ingrese el id autor ");
 
         btnSearch.setText("Buscar");
 

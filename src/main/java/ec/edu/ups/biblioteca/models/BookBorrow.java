@@ -4,18 +4,18 @@
  */
 package ec.edu.ups.biblioteca.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class BookBorrow {
     private User userBook;
     private Book bookBorrowed;
     private int transactionNumber;
-    private Date returnDate;
+    private LocalDate returnDate;
 
     public BookBorrow() {
     }
 
-    public BookBorrow(User userBook, Book bookBorrowed, int transactionNumber,Date returnDate) {
+    public BookBorrow(User userBook, Book bookBorrowed, int transactionNumber,LocalDate returnDate) {
         this.userBook = userBook;
         this.bookBorrowed = bookBorrowed;
         this.transactionNumber = transactionNumber;
@@ -46,11 +46,11 @@ public class BookBorrow {
         this.transactionNumber = transactionNumber;
     }
 
-    public Date getReturnDate() {
+    public LocalDate getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(Date returnDate) {
+    public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
     
