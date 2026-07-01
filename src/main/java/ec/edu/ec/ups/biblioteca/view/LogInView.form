@@ -51,7 +51,7 @@
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="txtMailLogIn" max="32767" attributes="0"/>
-                                      <Component id="txtPasswordLogIn" max="32767" attributes="0"/>
+                                      <Component id="txtPassord" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
                               </Group>
@@ -70,12 +70,12 @@
               <Component id="jblLogIn" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="lblMail" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="8" max="32767" attributes="0"/>
-              <Component id="txtPasswordLogIn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <Component id="txtMailLogIn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="lblPassword" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="txtMailLogIn" min="-2" max="-2" attributes="0"/>
+              <Component id="txtPassord" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="btnLogIn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -94,22 +94,22 @@
         <Property name="text" type="java.lang.String" value="Correo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtMailLogIn">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMailLogInActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblPassword">
       <Properties>
         <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="txtPasswordLogIn">
-    </Component>
     <Component class="javax.swing.JButton" name="btnLogIn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Iniciar Sesion"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="txtPassord">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtMailLogIn">
     </Component>
   </SubComponents>
 </Form>

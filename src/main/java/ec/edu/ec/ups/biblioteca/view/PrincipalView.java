@@ -8,12 +8,16 @@ import ec.edu.ec.bibliotecaDAO.DaoAuthor;
 import ec.edu.ec.bibliotecaDAO.DaoAuthorMemory;
 import ec.edu.ec.bibliotecaDAO.DaoBook;
 import ec.edu.ec.bibliotecaDAO.DaoBookMemory;
+import ec.edu.ec.bibliotecaDAO.DaoBorrow;
+import ec.edu.ec.bibliotecaDAO.DaoBorrowMemory;
 import ec.edu.ec.bibliotecaDAO.DaoUser;
 import ec.edu.ec.bibliotecaDAO.DaoUserMemory;
 import ec.edu.ups.biblioteca.controller.AuthorController;
 import ec.edu.ups.biblioteca.controller.BibliotecaController;
+import ec.edu.ups.biblioteca.controller.BorrowsController;
 import ec.edu.ups.biblioteca.controller.UserController;
 import ec.edu.ups.biblioteca.models.User;
+import javax.swing.JMenuItem;
 
 public class PrincipalView extends javax.swing.JFrame {
     
@@ -49,11 +53,13 @@ public class PrincipalView extends javax.swing.JFrame {
     private DaoBook daoBook;
     private DaoUser daoUser;
     private DaoAuthor daoAuthor;
+    private DaoBorrow daoBorrow;
     
     //Conotrollers
     private BibliotecaController controllerBliblio;
     private AuthorController authorController;
     private UserController userController;
+    private BorrowsController borrowController;
     
 
     /**
@@ -79,8 +85,6 @@ public class PrincipalView extends javax.swing.JFrame {
         updateAuthorView = new UpdateAuthorView();
         deleteAuthorView = new DeleteAuthorView();
         
-        //Usuario
-        this.userLogged = null;
         //Prestamos
         logInView = new LogInView();
         borrowsView = new BorrowsView();
@@ -90,19 +94,14 @@ public class PrincipalView extends javax.swing.JFrame {
         daoBook = new DaoBookMemory();
         daoAuthor = new DaoAuthorMemory();
         daoUser = new DaoUserMemory();
+        daoBorrow = new DaoBorrowMemory(daoUser);
         // Controllers
         controllerBliblio = new BibliotecaController(daoAuthor,daoBook,createBookView,deleteBookView,searchBookView,listBookView);
         authorController = new AuthorController(createAuthorView,deleteAuthorView,searchAuthorView,updateAuthorView,daoAuthor);
         userController = new UserController(createUserView,deleteUserView,searchUserView,updateUserView,listUsersView,daoUser);
-        
-        
-                
+        borrowController = new BorrowsController(logInView,borrowsView,returnsView,listBorrowsView,this.logOutMenu,daoBook,daoUser,daoBorrow,desktopPane);
         
     }
-    
-
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,14 +115,8 @@ public class PrincipalView extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
         desktopPane = new javax.swing.JDesktopPane();
-        jInternalFrame1 = new javax.swing.JInternalFrame();
-        jPanel1 = new javax.swing.JPanel();
-        btnLogIn = new javax.swing.JButton();
-        btnBorrow = new javax.swing.JButton();
-        btnReturn = new javax.swing.JButton();
-        btnList = new javax.swing.JButton();
-        btnLogOut = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         userMenu = new javax.swing.JMenu();
         createMenuUser = new javax.swing.JMenuItem();
@@ -141,6 +134,12 @@ public class PrincipalView extends javax.swing.JFrame {
         searchMenuBook = new javax.swing.JMenuItem();
         deleteMenuBook = new javax.swing.JMenuItem();
         listMenuBook = new javax.swing.JMenuItem();
+        borrowMenu = new javax.swing.JMenu();
+        menuLogIn = new javax.swing.JMenuItem();
+        menuBorrow = new javax.swing.JMenuItem();
+        returnMenu = new javax.swing.JMenuItem();
+        listBorrows = new javax.swing.JMenuItem();
+        logOutMenu = new javax.swing.JMenuItem();
         menuLanguage = new javax.swing.JMenu();
         languageMenuEnglish = new javax.swing.JMenuItem();
         languageMenuSpanish = new javax.swing.JMenuItem();
@@ -153,73 +152,9 @@ public class PrincipalView extends javax.swing.JFrame {
 
         jMenuItem1.setText("jMenuItem1");
 
+        jMenu3.setText("jMenu3");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jInternalFrame1.setVisible(true);
-
-        btnLogIn.setText("Log In");
-        btnLogIn.addActionListener(this::btnLogInActionPerformed);
-
-        btnBorrow.setText("Pedir");
-        btnBorrow.addActionListener(this::btnBorrowActionPerformed);
-
-        btnReturn.setText("Devolver");
-        btnReturn.addActionListener(this::btnReturnActionPerformed);
-
-        btnList.setText("Prestamos");
-        btnList.addActionListener(this::btnListActionPerformed);
-
-        btnLogOut.setText("Log Out");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnReturn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBorrow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(btnLogOut)))
-                .addContainerGap(78, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLogIn)
-                    .addComponent(btnBorrow))
-                .addGap(43, 43, 43)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnReturn)
-                    .addComponent(btnList))
-                .addGap(18, 18, 18)
-                .addComponent(btnLogOut)
-                .addContainerGap(60, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
-        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
-        jInternalFrame1Layout.setHorizontalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jInternalFrame1Layout.setVerticalGroup(
-            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        desktopPane.add(jInternalFrame1);
-        jInternalFrame1.setBounds(0, 0, 400, 280);
 
         userMenu.setMnemonic('f');
         userMenu.setText("Usuarios");
@@ -299,6 +234,30 @@ public class PrincipalView extends javax.swing.JFrame {
         menuBook.add(listMenuBook);
 
         menuBar.add(menuBook);
+
+        borrowMenu.setText("Prestamos");
+
+        menuLogIn.setText("Log In");
+        menuLogIn.addActionListener(this::menuLogInActionPerformed);
+        borrowMenu.add(menuLogIn);
+
+        menuBorrow.setText("Pedir");
+        menuBorrow.addActionListener(this::menuBorrowActionPerformed);
+        borrowMenu.add(menuBorrow);
+
+        returnMenu.setText("Devolver");
+        returnMenu.addActionListener(this::returnMenuActionPerformed);
+        borrowMenu.add(returnMenu);
+
+        listBorrows.setText("Prestamos");
+        listBorrows.addActionListener(this::listBorrowsActionPerformed);
+        borrowMenu.add(listBorrows);
+
+        logOutMenu.setText("Log Out");
+        logOutMenu.addActionListener(this::logOutMenuActionPerformed);
+        borrowMenu.add(logOutMenu);
+
+        menuBar.add(borrowMenu);
 
         menuLanguage.setText("Idioma");
 
@@ -445,44 +404,6 @@ public class PrincipalView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteMenuAuthorActionPerformed
 
-    private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
-        // TODO add your handling code here:
-        if(logInView != null || !logInView.isVisible()){
-            desktopPane.remove(logInView);
-            logInView.setVisible(true);
-            desktopPane.add(logInView);
-            
-        }
-    }//GEN-LAST:event_btnLogInActionPerformed
-
-    private void btnBorrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrowActionPerformed
-        // TODO add your handling code here:
-        if(borrowsView!=null || !borrowsView.isValid()){
-            desktopPane.remove(borrowsView);
-            borrowsView.setVisible(true);
-            desktopPane.add(borrowsView);
-        }
-    }//GEN-LAST:event_btnBorrowActionPerformed
-
-    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
-        // TODO add your handling code here:
-        if(returnsView != null || !returnsView.isVisible()){
-            desktopPane.remove(returnsView);
-            returnsView.setVisible(true);
-            desktopPane.add(returnsView);
-        }
-    }//GEN-LAST:event_btnReturnActionPerformed
-
-    private void btnListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListActionPerformed
-        // TODO add your handling code here:
-        if(listBorrowsView != null || !listBorrowsView.isVisible()){
-            desktopPane.remove(listBorrowsView);
-            listBorrowsView.setVisible(true);
-            desktopPane.add(listBorrowsView);
-        
-        }
-    }//GEN-LAST:event_btnListActionPerformed
-
     private void updateMenuAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMenuAuthorActionPerformed
         // TODO add your handling code here:
         if(updateAuthorView != null || !updateAuthorView.isVisible()){
@@ -491,6 +412,47 @@ public class PrincipalView extends javax.swing.JFrame {
             desktopPane.add(updateAuthorView);
         }
     }//GEN-LAST:event_updateMenuAuthorActionPerformed
+
+    private void menuLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogInActionPerformed
+        // TODO add your handling code here:
+        if(logInView != null || !logInView.isVisible()){
+            desktopPane.remove(logInView);
+            logInView.setVisible(true);
+            desktopPane.add(logInView);
+        }
+    }//GEN-LAST:event_menuLogInActionPerformed
+
+    private void menuBorrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBorrowActionPerformed
+        // TODO add your handling code here:
+        if(borrowsView == null || !borrowsView.isVisible()){
+            desktopPane.remove(borrowsView);
+            borrowsView.setVisible(true);
+            desktopPane.add(borrowsView);
+        }
+        
+    }//GEN-LAST:event_menuBorrowActionPerformed
+
+    private void returnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnMenuActionPerformed
+        // TODO add your handling code here:
+        if(returnsView == null || !returnsView.isVisible()){
+            desktopPane.remove(returnsView);
+            returnsView.setVisible(true);
+            desktopPane.add(returnsView);
+        }
+    }//GEN-LAST:event_returnMenuActionPerformed
+
+    private void listBorrowsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBorrowsActionPerformed
+        // TODO add your handling code here:
+        if(listBorrowsView == null || !listBorrowsView.isVisible()){
+            desktopPane.remove(listBorrowsView);
+            listBorrowsView.setVisible(true);
+            desktopPane.add(listBorrowsView);
+        }
+    }//GEN-LAST:event_listBorrowsActionPerformed
+
+    private void logOutMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logOutMenuActionPerformed
     public User getUserLogged(){
         return userLogged;
     }
@@ -535,11 +497,7 @@ public class PrincipalView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu authorMenu;
-    private javax.swing.JButton btnBorrow;
-    private javax.swing.JButton btnList;
-    private javax.swing.JButton btnLogIn;
-    private javax.swing.JButton btnLogOut;
-    private javax.swing.JButton btnReturn;
+    private javax.swing.JMenu borrowMenu;
     private javax.swing.JMenuItem createMenuAuthor;
     private javax.swing.JMenuItem createMenuBook;
     private javax.swing.JMenuItem createMenuUser;
@@ -547,19 +505,23 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem deleteMenuBook;
     private javax.swing.JMenuItem deleteMenuUser;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem languageMenuEnglish;
     private javax.swing.JMenuItem languageMenuSpanish;
+    private javax.swing.JMenuItem listBorrows;
     private javax.swing.JMenuItem listMenuBook;
     private javax.swing.JMenuItem listMenuUser;
+    private javax.swing.JMenuItem logOutMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuBook;
+    private javax.swing.JMenuItem menuBorrow;
     private javax.swing.JMenu menuLanguage;
+    private javax.swing.JMenuItem menuLogIn;
+    private javax.swing.JMenuItem returnMenu;
     private javax.swing.JMenuItem searchMenuAuthor;
     private javax.swing.JMenuItem searchMenuBook;
     private javax.swing.JMenuItem searchMenuUser;

@@ -17,7 +17,6 @@ public class DaoUserMemory implements DaoUser{
         users = new ArrayList<>();
         this.indexSearch = -1;
     }
-
     public int getIndexSearch() {
         return indexSearch;
     }
@@ -68,7 +67,7 @@ public class DaoUserMemory implements DaoUser{
 
     @Override
     public List<User> listUsers() {
-        return users;
+        return this.users;
     }
 
     @Override

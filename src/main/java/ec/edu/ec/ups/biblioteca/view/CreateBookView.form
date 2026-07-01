@@ -225,7 +225,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblBookAuthor">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ingrese el autor "/>
+        <Property name="text" type="java.lang.String" value="Ingrese el id autor "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtBookAuthor">

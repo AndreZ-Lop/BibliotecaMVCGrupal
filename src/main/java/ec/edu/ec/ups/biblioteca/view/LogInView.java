@@ -4,6 +4,10 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author y2
@@ -17,6 +21,32 @@ public class LogInView extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public JButton getBtnLogIn() {
+        return btnLogIn;
+    }
+
+    public void setBtnLogIn(JButton btnLogIn) {
+        this.btnLogIn = btnLogIn;
+    }
+
+    public JTextField getTxtMailLogIn() {
+        return txtMailLogIn;
+    }
+
+    public void setTxtMailLogIn(JTextField txtMailLogIn) {
+        this.txtMailLogIn = txtMailLogIn;
+    }
+
+    public JPasswordField getTxtPassord() {
+        return txtPassord;
+    }
+
+    public void setTxtPassord(JPasswordField txtPassord) {
+        this.txtPassord = txtPassord;
+    }
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,10 +58,10 @@ public class LogInView extends javax.swing.JInternalFrame {
 
         jblLogIn = new javax.swing.JLabel();
         lblMail = new javax.swing.JLabel();
-        txtMailLogIn = new javax.swing.JTextField();
         lblPassword = new javax.swing.JLabel();
-        txtPasswordLogIn = new javax.swing.JPasswordField();
         btnLogIn = new javax.swing.JButton();
+        txtPassord = new javax.swing.JPasswordField();
+        txtMailLogIn = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -42,11 +72,11 @@ public class LogInView extends javax.swing.JInternalFrame {
 
         lblMail.setText("Correo");
 
-        txtMailLogIn.addActionListener(this::txtMailLogInActionPerformed);
-
         lblPassword.setText("Contraseña");
 
         btnLogIn.setText("Iniciar Sesion");
+
+        txtPassord.setText("jPasswordField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,7 +104,7 @@ public class LogInView extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(txtMailLogIn)
-                                        .addComponent(txtPasswordLogIn))
+                                        .addComponent(txtPassord))
                                     .addGap(2, 2, 2))))))
                 .addGap(148, 148, 148))
         );
@@ -85,12 +115,12 @@ public class LogInView extends javax.swing.JInternalFrame {
                 .addComponent(jblLogIn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMail)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(txtPasswordLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(txtMailLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(lblPassword)
                 .addGap(18, 18, 18)
-                .addComponent(txtMailLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPassord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(btnLogIn)
                 .addGap(31, 31, 31))
@@ -99,10 +129,6 @@ public class LogInView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtMailLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailLogInActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMailLogInActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogIn;
@@ -110,6 +136,6 @@ public class LogInView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblMail;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JTextField txtMailLogIn;
-    private javax.swing.JPasswordField txtPasswordLogIn;
+    private javax.swing.JPasswordField txtPassord;
     // End of variables declaration//GEN-END:variables
 }

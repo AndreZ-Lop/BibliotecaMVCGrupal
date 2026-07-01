@@ -4,6 +4,9 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author y2
@@ -16,6 +19,32 @@ public class ReturnsView extends javax.swing.JInternalFrame {
     public ReturnsView() {
         initComponents();
     }
+
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public void setBtnCancel(JButton btnCancel) {
+        this.btnCancel = btnCancel;
+    }
+
+    public JButton getBtnReturn() {
+        return btnReturn;
+    }
+
+    public void setBtnReturn(JButton btnReturn) {
+        this.btnReturn = btnReturn;
+    }
+
+    public JTextField getTxtReturn() {
+        return txtReturn;
+    }
+
+    public void setTxtReturn(JTextField txtReturn) {
+        this.txtReturn = txtReturn;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
