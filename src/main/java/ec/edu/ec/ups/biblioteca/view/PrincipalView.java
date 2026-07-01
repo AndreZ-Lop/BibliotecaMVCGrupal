@@ -53,7 +53,7 @@ public class PrincipalView extends javax.swing.JFrame {
     //Conotrollers
     private BibliotecaController controllerBliblio;
     private AuthorController authorController;
-    private UserController userController
+    private UserController userController;
     
 
     /**
@@ -94,6 +94,8 @@ public class PrincipalView extends javax.swing.JFrame {
         
         controllerBliblio = new BibliotecaController(daoAuthor,daoBook,createBookView,deleteBookView,searchBookView,listBookView);
         userController = new UserController(createUserView,deleteUserView,searchUserView,updateUserView,listUsersView,daoUser);
+        authorController = new AuthorController(createAuthorView, deleteAuthorView, searchAuthorView, updateAuthorView, daoAuthor);
+        
         
         
                 
@@ -116,6 +118,10 @@ public class PrincipalView extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         desktopPane = new javax.swing.JDesktopPane();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jPanel1 = new javax.swing.JPanel();
@@ -141,9 +147,17 @@ public class PrincipalView extends javax.swing.JFrame {
         searchMenuBook = new javax.swing.JMenuItem();
         deleteMenuBook = new javax.swing.JMenuItem();
         listMenuBook = new javax.swing.JMenuItem();
+        menuLanguage1 = new javax.swing.JMenu();
+        languageMenuEnglish1 = new javax.swing.JMenuItem();
+        languageMenuSpanish1 = new javax.swing.JMenuItem();
         menuLanguage = new javax.swing.JMenu();
         languageMenuEnglish = new javax.swing.JMenuItem();
         languageMenuSpanish = new javax.swing.JMenuItem();
+        menuBook1 = new javax.swing.JMenu();
+        LogInMenuItem = new javax.swing.JMenuItem();
+        pedirMenuItem = new javax.swing.JMenuItem();
+        devolverMenuItem = new javax.swing.JMenuItem();
+        prestamosMenuItem = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -152,6 +166,15 @@ public class PrincipalView extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem2.setText("jMenuItem2");
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
+
+        jMenuItem3.setText("jMenuItem3");
+
+        jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -300,6 +323,15 @@ public class PrincipalView extends javax.swing.JFrame {
 
         menuBar.add(menuBook);
 
+        menuLanguage1.setText("Idioma");
+
+        languageMenuEnglish1.setText("Ingles");
+        languageMenuEnglish1.addActionListener(this::languageMenuEnglish1ActionPerformed);
+        menuLanguage1.add(languageMenuEnglish1);
+
+        languageMenuSpanish1.setText("Español");
+        menuLanguage1.add(languageMenuSpanish1);
+
         menuLanguage.setText("Idioma");
 
         languageMenuEnglish.setText("Ingles");
@@ -309,7 +341,29 @@ public class PrincipalView extends javax.swing.JFrame {
         languageMenuSpanish.setText("Español");
         menuLanguage.add(languageMenuSpanish);
 
-        menuBar.add(menuLanguage);
+        menuLanguage1.add(menuLanguage);
+
+        menuBar.add(menuLanguage1);
+
+        menuBook1.setText("Menu");
+
+        LogInMenuItem.setText("Log In");
+        LogInMenuItem.addActionListener(this::LogInMenuItemActionPerformed);
+        menuBook1.add(LogInMenuItem);
+
+        pedirMenuItem.setText("Pedir");
+        pedirMenuItem.addActionListener(this::pedirMenuItemActionPerformed);
+        menuBook1.add(pedirMenuItem);
+
+        devolverMenuItem.setText("Devolver");
+        devolverMenuItem.addActionListener(this::devolverMenuItemActionPerformed);
+        menuBook1.add(devolverMenuItem);
+
+        prestamosMenuItem.setText("Prestamos");
+        prestamosMenuItem.addActionListener(this::prestamosMenuItemActionPerformed);
+        menuBook1.add(prestamosMenuItem);
+
+        menuBar.add(menuBook1);
 
         setJMenuBar(menuBar);
 
@@ -491,6 +545,26 @@ public class PrincipalView extends javax.swing.JFrame {
             desktopPane.add(updateAuthorView);
         }
     }//GEN-LAST:event_updateMenuAuthorActionPerformed
+
+    private void languageMenuEnglish1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageMenuEnglish1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_languageMenuEnglish1ActionPerformed
+
+    private void LogInMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogInMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LogInMenuItemActionPerformed
+
+    private void pedirMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedirMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pedirMenuItemActionPerformed
+
+    private void devolverMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_devolverMenuItemActionPerformed
+
+    private void prestamosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prestamosMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prestamosMenuItemActionPerformed
     public User getUserLogged(){
         return userLogged;
     }
@@ -534,6 +608,7 @@ public class PrincipalView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem LogInMenuItem;
     private javax.swing.JMenu authorMenu;
     private javax.swing.JButton btnBorrow;
     private javax.swing.JButton btnList;
@@ -547,19 +622,30 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem deleteMenuBook;
     private javax.swing.JMenuItem deleteMenuUser;
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenuItem devolverMenuItem;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem languageMenuEnglish;
+    private javax.swing.JMenuItem languageMenuEnglish1;
     private javax.swing.JMenuItem languageMenuSpanish;
+    private javax.swing.JMenuItem languageMenuSpanish1;
     private javax.swing.JMenuItem listMenuBook;
     private javax.swing.JMenuItem listMenuUser;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuBook;
+    private javax.swing.JMenu menuBook1;
     private javax.swing.JMenu menuLanguage;
+    private javax.swing.JMenu menuLanguage1;
+    private javax.swing.JMenuItem pedirMenuItem;
+    private javax.swing.JMenuItem prestamosMenuItem;
     private javax.swing.JMenuItem searchMenuAuthor;
     private javax.swing.JMenuItem searchMenuBook;
     private javax.swing.JMenuItem searchMenuUser;
