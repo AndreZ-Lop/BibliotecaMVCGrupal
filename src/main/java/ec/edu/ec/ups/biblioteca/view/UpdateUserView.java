@@ -4,6 +4,8 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -215,4 +217,15 @@ public class UpdateUserView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNewName;
     private javax.swing.JTextField txtNewPassword;
     // End of variables declaration//GEN-END:variables
+    public void changeLanguage(Locale locale){
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes",locale);
+        btnCancel.setText(bundle.getString("btnCancel"));
+        btnSearch.setText(bundle.getString("btnSearch"));
+        btnUpdate.setText(bundle.getString("updateUser"));
+        
+        lblUpdateSearch.setText(bundle.getString("labelUpdateSearch"));
+        lblNewMail.setText(bundle.getString("labelNewMail"));
+        lblNewPassword.setText(bundle.getString("labelNewPassword"));
+        lblNewName.setText(bundle.getString("labelNewName"));
+    }
 }

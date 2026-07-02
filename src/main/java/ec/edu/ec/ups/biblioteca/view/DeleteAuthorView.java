@@ -4,6 +4,8 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -109,4 +111,10 @@ public class DeleteAuthorView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jblDeleteAuthor;
     private javax.swing.JTextField txtDeleteAuthor;
     // End of variables declaration//GEN-END:variables
+    public void changeLanguage(Locale locale){
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes",locale);
+        btnDelete.setText(bundle.getString("btnDelete"));
+        btnCancel.setText(bundle.getString("btnCancel"));
+        jblDeleteAuthor.setText(bundle.getString("labelDeleteAuthor"));
+    }
 }

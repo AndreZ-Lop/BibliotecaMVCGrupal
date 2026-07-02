@@ -4,6 +4,8 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -110,4 +112,10 @@ public class SearchAuthorView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jblAuthor;
     private javax.swing.JTextField txtAuthorSearch;
     // End of variables declaration//GEN-END:variables
+    public void changeLanguage(Locale locale){
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes",locale);
+        btnSearch.setText(bundle.getString("btnSearch"));
+        btnCancel.setText(bundle.getString("btnCancel"));
+        jblAuthor.setText(bundle.getString("labelUpdateAuthor"));
+    }
 }

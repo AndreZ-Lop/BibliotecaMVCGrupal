@@ -17,7 +17,8 @@ import ec.edu.ups.biblioteca.controller.BibliotecaController;
 import ec.edu.ups.biblioteca.controller.BorrowsController;
 import ec.edu.ups.biblioteca.controller.UserController;
 import ec.edu.ups.biblioteca.models.User;
-import javax.swing.JMenuItem;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class PrincipalView extends javax.swing.JFrame {
     
@@ -266,6 +267,7 @@ public class PrincipalView extends javax.swing.JFrame {
         menuLanguage.add(languageMenuEnglish);
 
         languageMenuSpanish.setText("Español");
+        languageMenuSpanish.addActionListener(this::languageMenuSpanishActionPerformed);
         menuLanguage.add(languageMenuSpanish);
 
         menuBar.add(menuLanguage);
@@ -357,6 +359,8 @@ public class PrincipalView extends javax.swing.JFrame {
 
     private void languageMenuEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageMenuEnglishActionPerformed
         // TODO add your handling code here:
+        Locale local = new Locale("en", "US");
+        changeLanguage(local);
     }//GEN-LAST:event_languageMenuEnglishActionPerformed
 
     private void deleteMenuBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuBookActionPerformed
@@ -453,6 +457,12 @@ public class PrincipalView extends javax.swing.JFrame {
     private void logOutMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutMenuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_logOutMenuActionPerformed
+
+    private void languageMenuSpanishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_languageMenuSpanishActionPerformed
+        // TODO add your handling code here:
+        Locale local = new Locale("es", "EC");
+        changeLanguage(local);
+    }//GEN-LAST:event_languageMenuSpanishActionPerformed
     public User getUserLogged(){
         return userLogged;
     }
@@ -530,5 +540,64 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenu userMenu;
     // End of variables declaration//GEN-END:variables
    
- 
+    public void changeLanguage(Locale locale){
+         ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes",locale);
+         // menuBar
+         userMenu.setText(bundle.getString("User"));
+         authorMenu.setText(bundle.getString("Authors"));
+         menuBook.setText(bundle.getString("Books"));
+         borrowMenu.setText(bundle.getString("Request"));
+         menuLanguage.setText(bundle.getString("Language"));
+         
+         // userItems
+         createMenuUser.setText(bundle.getString("createUser"));
+         searchMenuUser.setText(bundle.getString("searchUser"));
+         deleteMenuUser.setText(bundle.getString("deleteUser"));
+         updateMenuUser.setText(bundle.getString("updateUser"));
+         listMenuUser.setText(bundle.getString("listUser"));
+         
+         // authorsItems
+         createMenuAuthor.setText(bundle.getString("addAuthor"));
+         searchMenuAuthor.setText(bundle.getString("searchAuthor"));
+         deleteMenuAuthor.setText(bundle.getString("deleteAuthor"));
+         updateMenuAuthor.setText(bundle.getString("updateAuthor"));
+         
+         // bookItems
+         createMenuBook.setText(bundle.getString("menuAddBook"));
+         searchMenuBook.setText(bundle.getString("menuSearchBook"));
+         deleteMenuBook.setText(bundle.getString("menuDeleteBook"));
+         listMenuBook.setText(bundle.getString("menuListBook"));
+         
+         // borrowItem
+         menuLogIn.setText(bundle.getString("logInMenu"));
+         menuBorrow.setText(bundle.getString("borrowMenu"));
+         returnMenu.setText(bundle.getString("returnMenu"));
+         listBorrows.setText(bundle.getString("listMenu"));
+         logOutMenu.setText(bundle.getString("logOutMenu"));
+         
+        // methods user
+        createUserView.changeLanguage(locale);
+        searchUserView.changeLanguage(locale);
+        deleteUserView.changeLanguage(locale);
+        updateUserView.changeLanguage(locale);
+        listUsersView.changeLanguage(locale);
+        
+        // methods book
+        createBookView.changeLanguage(locale);
+        searchBookView.changeLanguage(locale);
+        deleteBookView.changeLanguage(locale);
+        listBookView.changeLanguage(locale);
+        
+        // methods author
+        createAuthorView.changeLanguage(locale);
+        searchAuthorView.changeLanguage(locale);
+        updateAuthorView.changeLanguage(locale);
+        deleteAuthorView.changeLanguage(locale);
+        
+        // Methods borrow
+        logInView.changeLanguage(locale);
+        borrowsView.changeLanguage(locale);
+        listBorrowsView.changeLanguage(locale);
+        returnsView.changeLanguage(locale);
+    }
 }

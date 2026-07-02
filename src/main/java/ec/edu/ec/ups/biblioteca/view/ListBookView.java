@@ -6,6 +6,8 @@ package ec.edu.ec.ups.biblioteca.view;
 
 import ec.edu.ups.biblioteca.models.Book;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,12 +17,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListBookView extends javax.swing.JInternalFrame {
     private DefaultTableModel model;
+    private String tittle;
+    private String author;
+    private String restrictions;
+    private String isbn;
     /**
      * Creates new form ListBookView
      */
     public ListBookView() {
         model = new DefaultTableModel();
         initComponents();
+        this.title = "Tittle";
+        this.author = "Author";
+        this.restrictions = "Restrictions";
+        this.isbn = "ISBN";
         configurarTable();
         
         
@@ -141,10 +151,10 @@ public class ListBookView extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void configurarTable() {
-        model.addColumn("Tittle");
-        model.addColumn("Autor");
-        model.addColumn("Restricciones");
-        model.addColumn("ISBN");
+        model.addColumn(tittle);
+        model.addColumn(author);
+        model.addColumn(restrictions);
+        model.addColumn(isbn);
         tblBook.setModel(model);
     }
     
@@ -155,5 +165,18 @@ public class ListBookView extends javax.swing.JInternalFrame {
             model.addRow(fila);
         }
        
+    }
+
+    public void changeLanguage(Locale locale) {
+         ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes",locale);
+         btnCancel.setText(bundle.getString("btnCancel"));
+         btnList.setText(bundle.getString("btnList"));
+         model = new DefaultTableModel();
+         model.addColumn(bundle.getString("columTitle"));
+         model.addColumn(bundle.getString("columAuthor"));
+         model.addColumn(bundle.getString("columRestrictions"));
+         model.addColumn("ISBN");
+         tblBook.setModel(model);
+    
     }
 }

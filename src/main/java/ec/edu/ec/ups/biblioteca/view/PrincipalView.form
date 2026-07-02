@@ -254,6 +254,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Espa&#xf1;ol"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="languageMenuSpanishActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
