@@ -157,9 +157,14 @@ public class PrincipalView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        desktopPane.setBackground(java.awt.SystemColor.activeCaption);
+        desktopPane.setForeground(new java.awt.Color(255, 255, 255));
+
+        userMenu.setBackground(new java.awt.Color(153, 51, 0));
         userMenu.setMnemonic('f');
         userMenu.setText("Usuarios");
 
+        createMenuUser.setBackground(new java.awt.Color(153, 51, 0));
         createMenuUser.setMnemonic('o');
         createMenuUser.setText("Crear");
         createMenuUser.addActionListener(this::createMenuUserActionPerformed);
