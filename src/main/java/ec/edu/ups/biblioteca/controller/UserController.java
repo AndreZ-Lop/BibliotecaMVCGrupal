@@ -15,6 +15,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
@@ -26,6 +28,17 @@ public class UserController {
     private UpdateUserView updateUserView;
     private ListUsersView listUsersView;
     private DaoUser daoUser;
+    
+    //message
+    private String restrictionM = "Su cuenta tendra restriccione de edad desea continuar?";
+    private String couldtDM="No se pudo eliminar el usuario";
+    private String deleteM="Se ha eliminado el usuario correctamente";
+    private String userNotFM="Usuario no encontrado";
+    private String userFM="Usuario encontrado";
+    private String name="Nombre";
+    private String mail="Correo";
+    private String iD = "Cedula";
+    private String userCreated = "Usuario creado con exito";
 
     public UserController() {
         configurateEvents();
@@ -80,14 +93,16 @@ public class UserController {
         String mail = createUserView.getMailUser().getText();
         String password = createUserView.getPasswordUser().getText();
         if(age<18){
-            int option = JOptionPane.showConfirmDialog(createUserView,"Su cuenta tendra restriccione de edad desea continuar?");
+            int option = JOptionPane.showConfirmDialog(createUserView,restrictionM);
             if(option == JOptionPane.YES_OPTION){
                 daoUser.create(new User(mail,password,true,name,iD,date,true));
+                JOptionPane.showMessageDialog(createUserView, userCreated);
             }else{
                 createUserView.dispose();
             }
         }else{
             daoUser.create(new User(mail,password,false,name,iD,date,true));
+            JOptionPane.showMessageDialog(createUserView, userCreated);
         }
     }
     /*
@@ -102,9 +117,9 @@ public class UserController {
     public void configurateEventDelete(){
         int delete = Integer.parseInt(deleteUserView.getTxtDeleteUser().getText());
         if(!daoUser.delete(delete)){
-            JOptionPane.showMessageDialog(deleteUserView, "No se pudo eliminar el usuario");
+            JOptionPane.showMessageDialog(deleteUserView, couldtDM);
         }else{
-            JOptionPane.showMessageDialog(deleteUserView, "Se ha eliminado el usuario correctamente");
+            JOptionPane.showMessageDialog(deleteUserView, deleteM);
         }
         
     }
@@ -115,7 +130,7 @@ public class UserController {
     // Habilitar Cambios
     public void configurateShowOptions(){
         if(!daoUser.getIndexUpdate(Integer.parseInt(updateUserView.getTxtIdSearch().getText()))){
-            JOptionPane.showMessageDialog(updateUserView,"Usuario no encontrado");
+            JOptionPane.showMessageDialog(updateUserView,userNotFM);
             updateUserView.getBtnUpdate().setEnabled(false);
             updateUserView.getTxtNewMail().setEnabled(false);
             updateUserView.getTxtNewName().setEnabled(false);
@@ -143,12 +158,9 @@ public class UserController {
     public void configurateSearch(){
         User userFounded = daoUser.search(Integer.parseInt(searchUserView.getTxtUserSearch().getText()));
         if(userFounded == null){
-            JOptionPane.showMessageDialog(searchUserView, "Usuario no encontrado");
+            JOptionPane.showMessageDialog(searchUserView, userNotFM);
         }else{
-            JOptionPane.showMessageDialog(searchUserView, """
-                                                          Usuario Encontrado
-                                                          Nombre: """ + userFounded.getName() + "\nCorreo: " + userFounded.getMail() 
-                                                          + "\nCedula: " + userFounded.getiD());
+            JOptionPane.showMessageDialog(searchUserView, userFM +"\n"+ name + ": " + userFounded.getName() + "\n"+mail +": " + userFounded.getMail() +"\n"+ iD + ": " + userFounded.getiD());
         }
     }
     
@@ -170,7 +182,7 @@ public class UserController {
         createUserView.getBtnCancel().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                createUserView.dispose();
+                createUserView.setVisible(false);
             }
         });
     }
@@ -202,7 +214,7 @@ public class UserController {
         listUsersView.getBtnCancel().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                listUsersView.dispose();
+                listUsersView.setVisible(false);
             }
         });
     }
@@ -223,7 +235,7 @@ public class UserController {
         deleteUserView.getBtnCancel().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                deleteUserView.dispose();
+                deleteUserView.setVisible(false);
             }
         });
     }
@@ -253,7 +265,7 @@ public class UserController {
         updateUserView.getBtnCancel().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                updateUserView.dispose();
+                updateUserView.setVisible(false);
             }
         });
     }
@@ -267,6 +279,7 @@ public class UserController {
                 updateUserView.getTxtNewName().setEnabled(false);
                 updateUserView.getTxtNewPassword().setEnabled(false);
             }
+            
         });
     }
     /*
@@ -286,9 +299,22 @@ public class UserController {
          searchUserView.getBtnCancel().addActionListener(new ActionListener(){
              @Override
              public void actionPerformed(ActionEvent e){
-                 searchUserView.dispose();
+                 searchUserView.setVisible(false);
              }
          });
+     }
+     
+     public void changeLanguage(Locale locale){
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes",locale);
+        this.userCreated = bundle.getString("userCreated");
+        this.couldtDM =bundle.getString("couldtDM");
+        this.deleteM =bundle.getString("deleteM");
+        this.mail=bundle.getString("mail");
+        this.userFM=bundle.getString("userFM");
+        this.userNotFM=bundle.getString("userNotFM");
+        this.name=bundle.getString("name");
+        this.iD=bundle.getString("iD");
+        this.restrictionM=bundle.getString("restrictionM");
      }
 }
 

@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -35,6 +34,16 @@ public class ListUsersView extends javax.swing.JInternalFrame {
         configurarTabla();
     }
 
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public void setBtnCancel(JButton btnCancel) {
+        this.btnCancel = btnCancel;
+    }
+    
+    
+
     public JButton getBtnList() {
         return btnList;
     }
@@ -43,13 +52,6 @@ public class ListUsersView extends javax.swing.JInternalFrame {
         this.btnList = btnList;
     }
 
-    public JButton getBtnCancel() {
-        return btnCancel;
-    }
-
-    public void setBtnCancel(JButton btnCancel) {
-        this.btnCancel = btnCancel;
-    }
 
     public DefaultTableModel getModel() {
         return model;
@@ -72,13 +74,14 @@ public class ListUsersView extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUsers = new javax.swing.JTable();
         btnList = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblList = new javax.swing.JLabel();
+        btnCancel = new javax.swing.JButton();
 
         setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setResizable(true);
-        setPreferredSize(new java.awt.Dimension(450, 350));
+        setPreferredSize(new java.awt.Dimension(450, 400));
 
         tblUsers.setBackground(new java.awt.Color(204, 204, 204));
         tblUsers.setFont(new java.awt.Font("Segoe UI Semibold", 2, 12)); // NOI18N
@@ -100,43 +103,44 @@ public class ListUsersView extends javax.swing.JInternalFrame {
         btnList.setText("Listar");
         btnList.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(151, 151, 151), new java.awt.Color(151, 151, 151), new java.awt.Color(151, 151, 151), new java.awt.Color(151, 151, 151)));
 
-        btnCancel.setBackground(new java.awt.Color(204, 204, 204));
-        btnCancel.setText("Cancelar");
-        btnCancel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(151, 151, 151), new java.awt.Color(151, 151, 151), new java.awt.Color(151, 151, 151), new java.awt.Color(151, 151, 151)));
-
         jPanel2.setBackground(new java.awt.Color(0, 153, 153));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setText("Lista de Usuarios");
+        lblList.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lblList.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblList.setText("Lista de Usuarios");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(jLabel1)
+                .addGap(76, 76, 76)
+                .addComponent(lblList, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(lblList)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
+
+        btnCancel.setBackground(new java.awt.Color(204, 204, 204));
+        btnCancel.setText("Cancel");
+        btnCancel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(151, 151, 151), new java.awt.Color(151, 151, 151), new java.awt.Color(151, 151, 151), new java.awt.Color(151, 151, 151)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addComponent(btnList, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addGap(72, 72, 72)
+                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -146,10 +150,10 @@ public class ListUsersView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnList, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnList, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                     .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -186,12 +190,13 @@ public class ListUsersView extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnList;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblList;
     private javax.swing.JTable tblUsers;
     // End of variables declaration//GEN-END:variables
+
     public void changeLanguage(Locale locale){
          ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes",locale);
          btnCancel.setText(bundle.getString("btnCancel"));
@@ -202,5 +207,6 @@ public class ListUsersView extends javax.swing.JInternalFrame {
          model.addColumn(bundle.getString("columRestriction"));
          model.addColumn(bundle.getString("columCanRequest"));
          tblUsers.setModel(model);
+         lblList.setText(bundle.getString("listUser"));
     }
 }

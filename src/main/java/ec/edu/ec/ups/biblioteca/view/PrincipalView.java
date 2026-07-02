@@ -17,11 +17,13 @@ import ec.edu.ups.biblioteca.controller.BibliotecaController;
 import ec.edu.ups.biblioteca.controller.BorrowsController;
 import ec.edu.ups.biblioteca.controller.UserController;
 import ec.edu.ups.biblioteca.models.User;
+import java.awt.Toolkit;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
 
 public class PrincipalView extends javax.swing.JFrame {
-    
     //Users View
     private CreateUserView createUserView;
     private SearchUserView searchUserView;
@@ -61,36 +63,63 @@ public class PrincipalView extends javax.swing.JFrame {
     private AuthorController authorController;
     private UserController userController;
     private BorrowsController borrowController;
-    
-
     /**
      * Creates new form PrincipalView
      */
     public PrincipalView() {
         // Dao se debe instanciar una unica vez durante la aprtura de de la interfaz principal 
         initComponents();
+        
+        //Properties
+        int ancho = Toolkit.getDefaultToolkit().getScreenSize().width;
+        int alto = Toolkit.getDefaultToolkit().getScreenSize().height;
+        System.out.println(ancho);
+        System.out.println(alto);
+        this.setSize(ancho,alto);
+        lblFondo.setSize(ancho,alto);
         //Users
         createUserView = new CreateUserView();
         searchUserView = new SearchUserView();
-        updateUserView = new UpdateUserView();
+        updateUserView = new UpdateUserView();      
         deleteUserView = new DeleteUserView();
         listUsersView = new ListUsersView();
+        
+        desktopPane.add(createUserView);
+        desktopPane.add(searchUserView);
+        desktopPane.add(updateUserView);
+        desktopPane.add(deleteUserView);
+        desktopPane.add(listUsersView);
         //Book
         createBookView = new CreateBookView();
         searchBookView = new SearchBookView();
         deleteBookView = new DeleteBookView();
         listBookView = new ListBookView();
+        
+        desktopPane.add(createBookView);
+        desktopPane.add(searchBookView);
+        desktopPane.add(deleteBookView);
+        desktopPane.add(listBookView);
         //Author
         createAuthorView = new CreateAuthorView();
         searchAuthorView = new SearchAuthorView();
         updateAuthorView = new UpdateAuthorView();
         deleteAuthorView = new DeleteAuthorView();
         
+        desktopPane.add(createAuthorView);
+        desktopPane.add(searchAuthorView);
+        desktopPane.add(updateAuthorView);
+        desktopPane.add(deleteAuthorView);
+        
         //Prestamos
         logInView = new LogInView();
         borrowsView = new BorrowsView();
         listBorrowsView = new ListBorrowsView();
         returnsView = new ReturnsView();
+        
+        desktopPane.add(logInView);
+        desktopPane.add(borrowsView);
+        desktopPane.add(listBorrowsView);
+        desktopPane.add(returnsView);
         //Dao
         daoBook = new DaoBookMemory();
         daoAuthor = new DaoAuthorMemory();
@@ -101,6 +130,8 @@ public class PrincipalView extends javax.swing.JFrame {
         authorController = new AuthorController(createAuthorView,deleteAuthorView,searchAuthorView,updateAuthorView,daoAuthor);
         userController = new UserController(createUserView,deleteUserView,searchUserView,updateUserView,listUsersView,daoUser);
         borrowController = new BorrowsController(logInView,borrowsView,returnsView,listBorrowsView,this.logOutMenu,daoBook,daoUser,daoBorrow,desktopPane);
+        
+        cantResizable();
         
     }
     /**
@@ -118,6 +149,7 @@ public class PrincipalView extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         desktopPane = new javax.swing.JDesktopPane();
+        lblFondo = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         userMenu = new javax.swing.JMenu();
         createMenuUser = new javax.swing.JMenuItem();
@@ -159,6 +191,11 @@ public class PrincipalView extends javax.swing.JFrame {
 
         desktopPane.setBackground(java.awt.SystemColor.activeCaption);
         desktopPane.setForeground(new java.awt.Color(255, 255, 255));
+
+        lblFondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/WhatsApp Image 2026-07-02 at 15.38.34.jpg"))); // NOI18N
+        desktopPane.add(lblFondo);
+        lblFondo.setBounds(0, 0, 400, 280);
 
         userMenu.setBackground(new java.awt.Color(153, 51, 0));
         userMenu.setMnemonic('f');
@@ -295,50 +332,46 @@ public class PrincipalView extends javax.swing.JFrame {
 
     private void updateMenuUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMenuUserActionPerformed
         if(updateUserView != null || !updateUserView.isVisible()){
-            desktopPane.remove(updateUserView);
             updateUserView.setVisible(true);
-            desktopPane.add(updateUserView);
+            updateUserView.moveToFront();
+            centerInternalFrame(updateUserView, desktopPane);
         }
     }//GEN-LAST:event_updateMenuUserActionPerformed
 
     private void createMenuUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createMenuUserActionPerformed
         // TODO add your handling code here:
         if(createUserView != null || !createUserView.isVisible()){
-            desktopPane.remove(createUserView);
             createUserView.setVisible(true);
-            desktopPane.add(createUserView);
+            createUserView.moveToFront();
+            centerInternalFrame(createUserView, desktopPane);
         }
-    
-       
+
     }//GEN-LAST:event_createMenuUserActionPerformed
 
     private void searchMenuUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchMenuUserActionPerformed
         // TODO add your handling code here:
         if(searchUserView!=null || !searchUserView.isVisible()){
-            desktopPane.remove(searchUserView);
             searchUserView.setVisible(true);
-            desktopPane.add(searchUserView);
-            
+            searchUserView.moveToFront();  
+            centerInternalFrame(searchUserView, desktopPane);
         }
-      
-        
     }//GEN-LAST:event_searchMenuUserActionPerformed
 
     private void deleteMenuUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuUserActionPerformed
         // TODO add your handling code here:
         if(deleteUserView != null || !deleteUserView.isVisible()){
-            desktopPane.remove(deleteUserView);
             deleteUserView.setVisible(true);
-            desktopPane.add(deleteUserView);
+            deleteUserView.moveToFront();
+            centerInternalFrame(deleteUserView, desktopPane);
         }
     }//GEN-LAST:event_deleteMenuUserActionPerformed
 
     private void listMenuUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listMenuUserActionPerformed
         // TODO add your handling code here:
         if(listUsersView != null || !listUsersView.isVisible()){
-            desktopPane.remove(listUsersView);
             listUsersView.setVisible(true);
-            desktopPane.add(listUsersView);
+            listUsersView.moveToFront();
+            centerInternalFrame(listUsersView, desktopPane);
             
         }
     
@@ -347,18 +380,18 @@ public class PrincipalView extends javax.swing.JFrame {
     private void createMenuBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createMenuBookActionPerformed
         // TODO add your handling code here:
         if(createBookView != null || !createBookView.isVisible()){
-            desktopPane.remove(createBookView);
             createBookView.setVisible(true);
-            desktopPane.add(createBookView);
+            createBookView.moveToFront();
+            centerInternalFrame(createBookView, desktopPane);
         }
     }//GEN-LAST:event_createMenuBookActionPerformed
 
     private void searchMenuBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchMenuBookActionPerformed
         // TODO add your handling code here:
         if(searchBookView != null || searchBookView.isVisible()){
-            desktopPane.remove(searchBookView);
             searchBookView.setVisible(true);
-            desktopPane.add(searchBookView);
+            searchBookView.moveToFront();
+            centerInternalFrame(searchBookView, desktopPane);
         }
     }//GEN-LAST:event_searchMenuBookActionPerformed
 
@@ -371,72 +404,72 @@ public class PrincipalView extends javax.swing.JFrame {
     private void deleteMenuBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuBookActionPerformed
         // TODO add your handling code here:
         if(deleteBookView != null || deleteBookView.isVisible()){
-           desktopPane.remove(deleteBookView);
            deleteBookView.setVisible(true);
-           desktopPane.add(deleteBookView);
+           deleteBookView.moveToFront();
+           centerInternalFrame(deleteBookView, desktopPane);
         }
     }//GEN-LAST:event_deleteMenuBookActionPerformed
 
     private void listMenuBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listMenuBookActionPerformed
         // TODO add your handling code here:
         if(listBookView != null || !listBookView.isVisible()){
-            desktopPane.remove(listBookView);
             listBookView.setVisible(true);
-            desktopPane.add(listBookView);
+            listBookView.moveToFront();
+            centerInternalFrame(listBookView, desktopPane);
         }
     }//GEN-LAST:event_listMenuBookActionPerformed
 
     private void createMenuAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createMenuAuthorActionPerformed
         // TODO add your handling code here:
         if(createAuthorView != null || !createAuthorView.isVisible()){
-            desktopPane.remove(createAuthorView);
-            createAuthorView.setVisible(true);
-            desktopPane.add(createAuthorView);
+            createAuthorView.setVisible(true);  
+            createAuthorView.moveToFront();
+            centerInternalFrame(createAuthorView, desktopPane);
         }
     }//GEN-LAST:event_createMenuAuthorActionPerformed
 
     private void searchMenuAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchMenuAuthorActionPerformed
         // TODO add your handling code here:
         if(searchAuthorView != null || !searchAuthorView.isVisible()){
-            desktopPane.remove(searchAuthorView);
             searchAuthorView.setVisible(true);
-            desktopPane.add(searchAuthorView);
+            searchAuthorView.moveToFront();
+            centerInternalFrame(searchAuthorView, desktopPane);
         }
     }//GEN-LAST:event_searchMenuAuthorActionPerformed
 
     private void deleteMenuAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuAuthorActionPerformed
         // TODO add your handling code here:
         if(deleteAuthorView != null || !deleteAuthorView.isVisible()){
-            desktopPane.remove(deleteAuthorView);
             deleteAuthorView.setVisible(true);
-            desktopPane.add(deleteAuthorView);
+            deleteAuthorView.moveToFront();
+            centerInternalFrame(deleteAuthorView, desktopPane);
         }
     }//GEN-LAST:event_deleteMenuAuthorActionPerformed
 
     private void updateMenuAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMenuAuthorActionPerformed
         // TODO add your handling code here:
         if(updateAuthorView != null || !updateAuthorView.isVisible()){
-            desktopPane.remove(updateAuthorView);
             updateAuthorView.setVisible(true);
-            desktopPane.add(updateAuthorView);
+            updateAuthorView.moveToFront();
+            centerInternalFrame(updateAuthorView, desktopPane);
         }
     }//GEN-LAST:event_updateMenuAuthorActionPerformed
 
     private void menuLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogInActionPerformed
         // TODO add your handling code here:
         if(logInView != null || !logInView.isVisible()){
-            desktopPane.remove(logInView);
             logInView.setVisible(true);
-            desktopPane.add(logInView);
+            logInView.moveToFront();
+            centerInternalFrame(logInView, desktopPane);
         }
     }//GEN-LAST:event_menuLogInActionPerformed
 
     private void menuBorrowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBorrowActionPerformed
         // TODO add your handling code here:
         if(borrowsView == null || !borrowsView.isVisible()){
-            desktopPane.remove(borrowsView);
             borrowsView.setVisible(true);
-            desktopPane.add(borrowsView);
+            borrowsView.moveToFront();
+            centerInternalFrame(borrowsView, desktopPane);
         }
         
     }//GEN-LAST:event_menuBorrowActionPerformed
@@ -444,18 +477,18 @@ public class PrincipalView extends javax.swing.JFrame {
     private void returnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnMenuActionPerformed
         // TODO add your handling code here:
         if(returnsView == null || !returnsView.isVisible()){
-            desktopPane.remove(returnsView);
             returnsView.setVisible(true);
-            desktopPane.add(returnsView);
+            returnsView.moveToFront();
+            centerInternalFrame(returnsView, desktopPane);
         }
     }//GEN-LAST:event_returnMenuActionPerformed
 
     private void listBorrowsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBorrowsActionPerformed
         // TODO add your handling code here:
         if(listBorrowsView == null || !listBorrowsView.isVisible()){
-            desktopPane.remove(listBorrowsView);
             listBorrowsView.setVisible(true);
-            desktopPane.add(listBorrowsView);
+            listBorrowsView.moveToFront();
+            centerInternalFrame(listBorrowsView, desktopPane);
         }
     }//GEN-LAST:event_listBorrowsActionPerformed
 
@@ -468,12 +501,7 @@ public class PrincipalView extends javax.swing.JFrame {
         Locale local = new Locale("es", "EC");
         changeLanguage(local);
     }//GEN-LAST:event_languageMenuSpanishActionPerformed
-    public User getUserLogged(){
-        return userLogged;
-    }
-    public void setUserLogged(User userLogged){
-        this.userLogged = userLogged;
-    }
+
     /**
      * @param args the command line arguments
      */
@@ -527,6 +555,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem languageMenuEnglish;
     private javax.swing.JMenuItem languageMenuSpanish;
+    private javax.swing.JLabel lblFondo;
     private javax.swing.JMenuItem listBorrows;
     private javax.swing.JMenuItem listMenuBook;
     private javax.swing.JMenuItem listMenuUser;
@@ -604,5 +633,40 @@ public class PrincipalView extends javax.swing.JFrame {
         borrowsView.changeLanguage(locale);
         listBorrowsView.changeLanguage(locale);
         returnsView.changeLanguage(locale);
+        
+        //controllers language
+        userController.changeLanguage(locale);
+    }
+    
+    public static void centerInternalFrame(JInternalFrame frame, JDesktopPane desktop) {
+        frame.pack(); // si es necesario
+        int x = (desktop.getWidth() - frame.getWidth()) / 2;
+        int y = (desktop.getHeight() - frame.getHeight()) / 2;
+        frame.setLocation(x, y);
+    }
+    public void cantResizable(){
+        JInternalFrame[] frames = {
+        createUserView,
+        searchUserView,
+        updateUserView,
+        deleteUserView,
+        listUsersView,
+        createBookView,
+        searchBookView,
+        deleteBookView,
+        listBookView,
+        createAuthorView,
+        searchAuthorView,
+        updateAuthorView,
+        deleteAuthorView,
+        logInView,
+        borrowsView,
+        listBorrowsView,
+        returnsView
+    };
+
+    for (JInternalFrame frame : frames) {
+        frame.setResizable(false);
+        }
     }
 }

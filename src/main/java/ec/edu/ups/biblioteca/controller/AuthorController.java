@@ -53,9 +53,8 @@ public class AuthorController {
         int year = Integer.parseInt(createAuthorView.getTxtyearUser().getText());
         List<Book> authBooks = new ArrayList<>();
         Date date = new Date(year-1900,month-1,day);
-        String genreA = createAuthorView.getTxtGenderAuthor().getText();
-        String national = createAuthorView.getTxtNacionality().getText();
-        Author author = new Author(national,genreA,authBooks,nombre,id,date);
+        String national = createAuthorView.getComboBoxNation().getSelectedItem().toString();
+        Author author = new Author(national,authBooks,nombre,id,date);
         daoAuthor.create(author);        
     }
     
@@ -136,7 +135,5 @@ public class AuthorController {
             }
         });
     }
-    
-    
     
 }
