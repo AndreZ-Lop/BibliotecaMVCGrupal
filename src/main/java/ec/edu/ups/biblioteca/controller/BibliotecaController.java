@@ -13,6 +13,8 @@ import ec.edu.ups.biblioteca.models.Author;
 import ec.edu.ups.biblioteca.models.Book;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -55,6 +57,8 @@ public class BibliotecaController {
         configurateCloseWindow();
         configurateEventsDeleteBook();
         configurateEventsSearchBook();
+        dontSelect2BoxYes();
+        dontSelect2BoxNo();
     }
     //Cotroladores del libro
     public void createBook(){
@@ -140,6 +144,30 @@ public class BibliotecaController {
             }
         });
     }
-        
+    
+    //metodo para no seleccionar 2 botones
+    public void dontSelect2BoxYes(){
+         createBookView.getCheckBoxYes().addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                // El evento nos dice si se seleccionó o se deseleccionó
+                if(createBookView.getCheckBoxYes().isSelected()){
+                    createBookView.getCheckBoxNo().setSelected(false);
+                }
+            }
+        });
+     }
+    
+    public void dontSelect2BoxNo(){
+         createBookView.getCheckBoxNo().addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                // El evento nos dice si se seleccionó o se deseleccionó
+                if(createBookView.getCheckBoxNo().isSelected()){
+                    createBookView.getCheckBoxYes().setSelected(false);
+                }
+            }
+        });
+     }
 }
     

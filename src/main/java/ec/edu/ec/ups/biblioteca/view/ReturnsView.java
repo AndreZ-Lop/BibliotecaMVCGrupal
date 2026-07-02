@@ -4,6 +4,8 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -113,4 +115,10 @@ public class ReturnsView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jblReturn;
     private javax.swing.JTextField txtReturn;
     // End of variables declaration//GEN-END:variables
+     public void changeLanguage(Locale locale){
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes",locale);
+        btnReturn.setText(bundle.getString("btnDevolver"));
+        btnCancel.setText(bundle.getString("btnCancel"));
+        jblReturn.setText(bundle.getString("labelReturn"));
+    }
 }

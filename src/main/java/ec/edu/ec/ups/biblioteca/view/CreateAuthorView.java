@@ -4,6 +4,8 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -278,4 +280,17 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNameUser;
     private javax.swing.JTextField txtyearUser;
     // End of variables declaration//GEN-END:variables
+    public void changeLanguage(Locale locale){
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes",locale);
+        btnCancel.setText(bundle.getString("btnCancel"));
+        btnCreateUser.setText(bundle.getString("menuAddBook"));
+        lbId.setText(bundle.getString("labelIdAuthor"));
+        lbName.setText(bundle.getString("labelAuthorName"));
+        lblAuthorGender.setText(bundle.getString("labelGenderAuthor"));
+        lblBirthday.setText(bundle.getString("labelBirthdayAuthor"));
+        lblNacionality.setText(bundle.getString("labelNationalityAuthor"));
+        lblDay.setText(bundle.getString("labelDay"));
+        lblMonth.setText(bundle.getString("labelMoth"));
+        lblYear.setText(bundle.getString("labelYear"));
+    }
 }

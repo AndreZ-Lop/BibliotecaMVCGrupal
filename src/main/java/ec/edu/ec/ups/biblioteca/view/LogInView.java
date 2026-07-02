@@ -4,6 +4,8 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -76,8 +78,6 @@ public class LogInView extends javax.swing.JInternalFrame {
 
         btnLogIn.setText("Iniciar Sesion");
 
-        txtPassord.setText("jPasswordField1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,4 +138,11 @@ public class LogInView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtMailLogIn;
     private javax.swing.JPasswordField txtPassord;
     // End of variables declaration//GEN-END:variables
+     public void changeLanguage(Locale locale){
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes",locale);
+        btnLogIn.setText(bundle.getString("btnLogIn"));
+        jblLogIn.setText(bundle.getString("LogIn"));
+        lblMail.setText(bundle.getString("mail"));
+        lblPassword.setText(bundle.getString("password")); 
+    }
 }

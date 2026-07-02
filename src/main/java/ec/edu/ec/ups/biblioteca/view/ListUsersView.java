@@ -6,7 +6,10 @@ package ec.edu.ec.ups.biblioteca.view;
 
 import ec.edu.ups.biblioteca.models.User;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,11 +18,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListUsersView extends javax.swing.JInternalFrame {
     private DefaultTableModel model;
+    private String name;
+    private String mail;
+    private String restrictions;
+    private String canRequest;
+                
     /**
      * Creates new form ListUsersView
      */
     public ListUsersView() {
         initComponents();
+        this.name = "Nombre";
+        this.mail = "Correo";
+        this.restrictions = "Restricciones";
+        this.canRequest = "Puede solicitar?";
         configurarTabla();
     }
 
@@ -122,10 +134,10 @@ public class ListUsersView extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     public void configurarTabla(){
         model = new DefaultTableModel();
-        model.addColumn("Nombre");
-        model.addColumn("Correo");
-        model.addColumn("Restricciones");
-        model.addColumn("Puede solicitar");
+        model.addColumn(name);
+        model.addColumn(mail);
+        model.addColumn(restrictions);
+        model.addColumn(canRequest);
         tblUsers.setModel(model);
         
         
@@ -145,4 +157,15 @@ public class ListUsersView extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblUsers;
     // End of variables declaration//GEN-END:variables
+    public void changeLanguage(Locale locale){
+         ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes",locale);
+         btnCancel.setText(bundle.getString("btnCancel"));
+         btnList.setText(bundle.getString("btnList"));
+         model = new DefaultTableModel();
+         model.addColumn(bundle.getString("columnName"));
+         model.addColumn(bundle.getString("columMail"));
+         model.addColumn(bundle.getString("columRestriction"));
+         model.addColumn(bundle.getString("columCanRequest"));
+         tblUsers.setModel(model);
+    }
 }

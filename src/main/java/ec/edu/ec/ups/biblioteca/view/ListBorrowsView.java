@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -149,4 +151,15 @@ public class ListBorrowsView extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblBorrows;
     // End of variables declaration//GEN-END:variables
+    public void changeLanguage(Locale locale){
+         ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes",locale);
+         btnCancel.setText(bundle.getString("btnCancel"));
+         btnBorrowList.setText(bundle.getString("btnList"));
+         model = new DefaultTableModel();
+         model.addColumn(bundle.getString("listBorrowName"));
+         model.addColumn(bundle.getString("listBorrowBook"));
+         model.addColumn(bundle.getString("listReturnDate"));
+         model.addColumn(bundle.getString("listTransactionNumber"));
+         tblBorrows.setModel(model);
+    }
 }

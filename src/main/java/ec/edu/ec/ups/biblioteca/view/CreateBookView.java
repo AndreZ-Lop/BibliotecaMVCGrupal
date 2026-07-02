@@ -4,6 +4,8 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
@@ -229,8 +231,8 @@ public class CreateBookView extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(lblDate)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblDay, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblDay, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtDay, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -341,4 +343,25 @@ public class CreateBookView extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTittle;
     private javax.swing.JTextField txtYear;
     // End of variables declaration//GEN-END:variables
+    public void changeLanguage(Locale locale){
+         ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes",locale);
+         btnAdd.setText(bundle.getString("menuAddBook"));
+         btnCancel.setText(bundle.getString("btnCancel"));
+         btnSearch.setText(bundle.getString("btnSearch"));
+         checkBoxNo.setText(bundle.getString("checkBoxNo"));
+         checkBoxYes.setText(bundle.getString("checkBoxYes"));
+         lblBookAuthor.setText(bundle.getString("labelAuthorId"));
+         lblBookLanguage.setText(bundle.getString("labelBookLanguage"));
+         lblDate.setText(bundle.getString("labelPublicationDate"));
+         lblDay.setText(bundle.getString("labelDay"));
+         lblMonth.setText(bundle.getString("labelMoth"));
+         lblYear.setText(bundle.getString("labelYear"));
+         lblGenre.setText(bundle.getString("labelGenreBook"));
+         lblISBN.setText(bundle.getString("labelISBN"));
+         lblRestriction.setText(bundle.getString("labelRestrictions"));
+         lblTittle.setText(bundle.getString("labelBookTittle"));
+         
+         
+         
+    }
 }

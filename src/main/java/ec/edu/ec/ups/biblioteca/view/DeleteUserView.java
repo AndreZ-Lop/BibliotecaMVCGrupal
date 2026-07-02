@@ -4,6 +4,8 @@
  */
 package ec.edu.ec.ups.biblioteca.view;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -118,4 +120,10 @@ public class DeleteUserView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jblDeleteUser;
     private javax.swing.JTextField txtDeleteUser;
     // End of variables declaration//GEN-END:variables
+    public void changeLanguage(Locale locale){
+         ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.biblioteca.i18n.mensajes",locale);
+         btnCancel.setText(bundle.getString("btnCancel"));
+         btnDelete.setText(bundle.getString("btnDelete"));
+         jblDeleteUser.setText(bundle.getString("labelDelete"));
+    }
 }
