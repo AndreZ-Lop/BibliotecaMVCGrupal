@@ -7,6 +7,7 @@ package ec.edu.ec.ups.biblioteca.view;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 /**
@@ -38,13 +39,22 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
         this.txtDayUser = txtDayUser;
     }
 
-    public JTextField getTxtGenderAuthor() {
-        return txtGenderAuthor;
+    public JComboBox<String> getComboBoxNation() {
+        return comboBoxNation;
     }
 
-    public void setTxtGenderAuthor(JTextField txtGenderAuthor) {
-        this.txtGenderAuthor = txtGenderAuthor;
+    public void setComboBoxNation(JComboBox<String> comboBoxNation) {
+        this.comboBoxNation = comboBoxNation;
     }
+
+    public JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    public void setBtnCancel(JButton btnCancel) {
+        this.btnCancel = btnCancel;
+    }
+    
 
     public JTextField getTxtIdUser() {
         return txtIdUser;
@@ -60,14 +70,6 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
 
     public void setTxtMonthUser(JTextField txtMonthUser) {
         this.txtMonthUser = txtMonthUser;
-    }
-
-    public JTextField getTxtNacionality() {
-        return txtNacionality;
-    }
-
-    public void setTxtNacionality(JTextField txtNacionality) {
-        this.txtNacionality = txtNacionality;
     }
 
     public JTextField getYearUser() {
@@ -109,13 +111,10 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
         lbName = new javax.swing.JLabel();
         lbId = new javax.swing.JLabel();
         lblBirthday = new javax.swing.JLabel();
-        lblAuthorGender = new javax.swing.JLabel();
         lblNacionality = new javax.swing.JLabel();
         btnCreateUser = new javax.swing.JButton();
         txtNameUser = new javax.swing.JTextField();
         txtIdUser = new javax.swing.JTextField();
-        txtNacionality = new javax.swing.JTextField();
-        txtGenderAuthor = new javax.swing.JTextField();
         lblDay = new javax.swing.JLabel();
         txtDayUser = new javax.swing.JTextField();
         lblMonth = new javax.swing.JLabel();
@@ -125,6 +124,7 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
         btnCancel = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        comboBoxNation = new javax.swing.JComboBox<>();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -135,19 +135,19 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
         setResizable(true);
 
         lbName.setFont(new java.awt.Font("Segoe UI Semibold", 2, 12)); // NOI18N
+        lbName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbName.setText("Ingrese el Nombre del autor");
 
         lbId.setFont(new java.awt.Font("Segoe UI Semibold", 2, 12)); // NOI18N
+        lbId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbId.setText("Ingrese el numero de cedula del autor");
 
         lblBirthday.setFont(new java.awt.Font("Segoe UI Semibold", 2, 12)); // NOI18N
+        lblBirthday.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBirthday.setText("Ingrese su fecha de nacimiento ");
 
-        lblAuthorGender.setFont(new java.awt.Font("Segoe UI Semibold", 2, 12)); // NOI18N
-        lblAuthorGender.setText("Genero autor");
-        lblAuthorGender.setToolTipText("");
-
         lblNacionality.setFont(new java.awt.Font("Segoe UI Semibold", 2, 12)); // NOI18N
+        lblNacionality.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNacionality.setText("Nacionalidad");
 
         btnCreateUser.setBackground(new java.awt.Color(204, 204, 204));
@@ -155,15 +155,16 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
         btnCreateUser.setText("Crear");
         btnCreateUser.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(151, 151, 151), new java.awt.Color(151, 151, 151), new java.awt.Color(151, 151, 151), new java.awt.Color(151, 151, 151)));
 
-        txtNacionality.addActionListener(this::txtNacionalityActionPerformed);
-
         lblDay.setFont(new java.awt.Font("Segoe UI Semibold", 2, 12)); // NOI18N
+        lblDay.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDay.setText("Dia");
 
         lblMonth.setFont(new java.awt.Font("Segoe UI Semibold", 2, 12)); // NOI18N
+        lblMonth.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMonth.setText("Mes");
 
         lblYear.setFont(new java.awt.Font("Segoe UI Semibold", 2, 12)); // NOI18N
+        lblYear.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblYear.setText("Año");
 
         btnCancel.setBackground(new java.awt.Color(204, 204, 204));
@@ -195,56 +196,51 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
+        comboBoxNation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Ecuador", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Esuatini", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Grecia", "Granada", "Guatemala", "Guinea", "Guinea-Bisáu", "Guinea Ecuatorial", "Guyana", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República del Congo", "República Democrática del Congo", "República Dominicana", "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santa Sede", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue", "Kosovo", "Palestina", "Taiwán", "Sáhara Occidental", "Islas Cook" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lbName, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbId, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblBirthday, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbId)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
+                                .addGap(150, 150, 150)
+                                .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(67, 67, 67)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblBirthday)
-                                    .addComponent(txtIdUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblNacionality, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnCreateUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(87, 87, 87)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblNacionality, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblDay)
+                                        .addComponent(lblDay, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtDayUser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lblAuthorGender))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtGenderAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNacionality, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblMonth)
+                                        .addComponent(txtDayUser, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMonthUser, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblYear)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtyearUser, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnCancel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtMonthUser, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblYear, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtyearUser, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(comboBoxNation, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNameUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbName))))
-                .addContainerGap(127, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(148, 148, 148)
+                        .addComponent(txtIdUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(btnCreateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82)
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,22 +261,18 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
                     .addComponent(lblDay)
                     .addComponent(txtDayUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMonth)
-                    .addComponent(txtMonthUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblYear)
+                    .addComponent(txtMonthUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtyearUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAuthorGender)
-                    .addComponent(txtGenderAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNacionality)
-                    .addComponent(txtNacionality, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCreateUser, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(comboBoxNation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCreateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -300,10 +292,6 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNacionalityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNacionalityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNacionalityActionPerformed
-
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelActionPerformed
@@ -312,23 +300,21 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnCreateUser;
+    private javax.swing.JComboBox<String> comboBoxNation;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JLabel lbId;
     private javax.swing.JLabel lbName;
-    private javax.swing.JLabel lblAuthorGender;
     private javax.swing.JLabel lblBirthday;
     private javax.swing.JLabel lblDay;
     private javax.swing.JLabel lblMonth;
     private javax.swing.JLabel lblNacionality;
     private javax.swing.JLabel lblYear;
     private javax.swing.JTextField txtDayUser;
-    private javax.swing.JTextField txtGenderAuthor;
     private javax.swing.JTextField txtIdUser;
     private javax.swing.JTextField txtMonthUser;
-    private javax.swing.JTextField txtNacionality;
     private javax.swing.JTextField txtNameUser;
     private javax.swing.JTextField txtyearUser;
     // End of variables declaration//GEN-END:variables
@@ -338,7 +324,6 @@ public class CreateAuthorView extends javax.swing.JInternalFrame {
         btnCreateUser.setText(bundle.getString("menuAddBook"));
         lbId.setText(bundle.getString("labelIdAuthor"));
         lbName.setText(bundle.getString("labelAuthorName"));
-        lblAuthorGender.setText(bundle.getString("labelGenderAuthor"));
         lblBirthday.setText(bundle.getString("labelBirthdayAuthor"));
         lblNacionality.setText(bundle.getString("labelNationalityAuthor"));
         lblDay.setText(bundle.getString("labelDay"));

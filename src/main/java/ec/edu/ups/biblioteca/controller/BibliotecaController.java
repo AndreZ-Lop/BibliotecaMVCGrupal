@@ -76,7 +76,7 @@ public class BibliotecaController {
         }
         Author author = daoAuthor.search(Integer.parseInt(createBookView.getTxtBookAuthor().getText()));
         if(author == null){
-            Author unknowAuthor = new Author("Desconocida","No especificado",null,"Desconocido",000000000,new Date(1900,00,1));
+            Author unknowAuthor = new Author("Desconocida",null,"Desconocido",000000000,new Date(1900,00,1));
             daoBook.create(new Book (tittle,isbn,genreL,date,unknowAuthor,language,true,restriction));
             
         }else{

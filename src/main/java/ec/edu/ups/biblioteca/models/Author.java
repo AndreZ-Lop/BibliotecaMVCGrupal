@@ -11,17 +11,15 @@ import java.util.Date;
 
 public class Author extends Person{
     private String nationality;
-    private String authorGender;
     private List<Book> authorBooks;
     
     public Author(){
         authorBooks = new ArrayList<>();
     }
 
-    public Author(String nationality, String genere, List<Book> authorBooks,String name,int iD, Date birthday) {
+    public Author(String nationality, List<Book> authorBooks,String name,int iD, Date birthday) {
         super(name,iD,birthday);
         this.nationality = nationality;
-        this.authorGender = genere;
         this.authorBooks = authorBooks;
     }
 
@@ -33,13 +31,6 @@ public class Author extends Person{
         this.nationality = nationality;
     }
 
-    public String getGender() {
-        return authorGender;
-    }
-
-    public void setGender(String gender) {
-        this.authorGender = gender;
-    }
 
     public List<Book> getAuthorBooks() {
         return authorBooks;
